@@ -4,16 +4,16 @@
       <div class="panel panel-default">
         <div class="panel-body">
           <h1 class="text-center">
-            <b>TJG</b> Web
+            <b>SAHRST</b>
             <br/>
-            <small>Área Restrita</small>
+            <small>Sistema de automatización de hojas de rutas para los sindicatos de transporte</small>
           </h1>
           <br/>
           <div class="alert alert-danger alert-dismissible" role="alert" *ngIf="errorCredentials">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
-            Usuário ou senha inválidos.
+            Usuario y contraseña inválidos.
           </div>
           <form [formGroup]="f" novalidate>
             <div class="form-group has-feedback" [ngClass]="{'has-success': f.controls['email'].valid,

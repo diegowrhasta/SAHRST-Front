@@ -1,0 +1,25 @@
+<div class="col-md-12">
+    <h1>{{title}}</h1>
+
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" class="col-md-5">
+
+        <p>
+            <label for="email">Email</label>
+            <input type="email" name="email" #email="ngModel" [(ngModel)]="user.email" required />
+            <span *ngIf="!email.valid && email.touched">
+                El email no es valido
+            </span>
+        </p>
+
+        <p>
+            <label for="password">Password</label>
+            <input type="password" name="password" #password="ngModel" [(ngModel)]="user.password" required />
+            <span *ngIf="!password.valid && password.touched">
+                La contrasena no es valido
+            </span>
+        </p>
+        <input type="submit" value="Entrar" class="btn btn-primary" [disabled]="!loginForm.form.valid">
+
+    </form>
+
+</div>
