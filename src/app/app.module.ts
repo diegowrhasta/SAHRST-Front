@@ -13,13 +13,17 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ConductorComponent } from './components/conductor/conductor.component';
+import { ConductorAddComponent } from './components/conductor-add/conductor-add.component';
+import { ConductorUpdateComponent } from './components/conductor-update/conductor-update.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    ConductorComponent
+    ConductorComponent,
+    ConductorAddComponent,
+    ConductorUpdateComponent
   ],
   imports: [
     BrowserModule,
