@@ -12,10 +12,7 @@ import { Conductor } from '../../models/conductor';
 })
 export class ConductorComponent implements OnInit {
   public page_title: string;
-  public identity;
-  public token;
-  public conductor: Conductor;
-  public status_car: string;
+  public conductores: Array<Conductor>;
 
   constructor(
     private _route: ActivatedRoute,
@@ -23,30 +20,23 @@ export class ConductorComponent implements OnInit {
     private _userService: UserService,
     private _conductorService: ConductorService
   ) { 
-    this.page_title = 'Crear nuevo conductor';
+    this.page_title = 'Conductores';
     //this.identity = this._userService.getIdentity();
     //this.token = this._userService.getToken();
     
   }
 
   ngOnInit() {
-    this.conductor = new Conductor(1,'','','','',1,'',1,1);
-  }
-
-
-  onSubmit(form){
-    console.log(this.conductor);
-    console.log(this._conductorService.pruebas());
-    
-    this._conductorService.agregar(this.conductor).subscribe(
+    console.log('Conductor cargado correctamente');
+    this._conductorService.getConductores().subscribe(
       response => {
-        this._router.navigate(['conductor']);
+        //if( response.status == 'success' ){
+          this.conductores = response;
+        //}
         console.log(response);
-        this.status_car ='aceptado';
       },
       error => {
-        console.log(<any>error);
-        this.status_car ='error';
+        console.log(error);
       }
     );
   }

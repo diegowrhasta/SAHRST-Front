@@ -1,3 +1,75 @@
-<p>
-  conductor-add works!
-</p>
+<div class="col-md-12">
+  <h2>{{page_title}}</h2>
+
+<div class="alert alert-danger" *ngIf="status_car == 'error'">
+  El conductor no se registro correctamente, intentelo de nuevo.
+</div>
+<div class="alert alert-success" *ngIf="status_car == 'aceptado'">
+  El conductor fue registrado correctamente.
+</div>
+
+  <form #conductornew="ngForm" (ngSubmit)="onSubmit(conductornew)" class="col-md-5">
+
+    <p>
+      <label for="nombres">Nombres</label>
+        <input type="text" name="nombres" #nombres="ngModel" [(ngModel)]="conductor.nombres" required />
+        <span *ngIf="!nombres.valid && nombres.touched">
+          Los nombres no son validos
+        </span>
+    </p>
+    <p>
+      <label for="ap_paterno">Apellido Paterno</label>
+        <input type="text" name="ap_paterno" #ap_paterno="ngModel" [(ngModel)]="conductor.ap_paterno" required />
+        <span *ngIf="!ap_paterno.valid && ap_paterno.touched">
+          El apellido paterno no es valido!!
+        </span>
+    </p>
+    <p>
+      <label for="ap_materno">Apellido Materno</label>
+        <input type="text" name="ap_materno" #ap_materno="ngModel" [(ngModel)]="conductor.ap_materno" required />
+        <span *ngIf="!ap_materno.valid && ap_materno.touched">
+        El apellido materno no es valido!!
+      </span>
+    </p>    
+    <p>
+      <label for="fecha_nacimiento">Fecha de nacimiento</label>
+        <input type="text" name="fecha_nacimiento" #fecha_nacimiento="ngModel" [(ngModel)]="conductor.fecha_nacimiento" required />
+        <span *ngIf="!fecha_nacimiento.valid && fecha_nacimiento.touched">
+        La fecha de nacimiento no es valido!!
+      </span>
+    </p>    
+    <p>
+      <label for="ci">CI</label>
+        <input type="number" name="ci" #ci="ngModel" [(ngModel)]="conductor.ci" required />
+        <span *ngIf="!ci.valid && ci.touched">
+        El CI no es valido!!
+      </span>
+    </p>    
+    <p>
+      <label for="direccion">direccion</label>
+        <input type="text" name="direccion" #direccion="ngModel" [(ngModel)]="conductor.direccion" required />
+        <span *ngIf="!direccion.valid && direccion.touched">
+        La direccion no es valido!!
+      </span>
+    </p>    
+    <p>
+      <label for="celular">Celular</label>
+        <input type="number" name="celular" #celular="ngModel" [(ngModel)]="conductor.celular" required />
+        <span *ngIf="!celular.valid && celular.touched">
+        El celular no es valido!!
+      </span>
+    </p>    
+    <p>
+      <label for="telefono">Telefono</label>
+        <input type="number" name="telefono" #telefono="ngModel" [(ngModel)]="conductor.telefono" required />
+        <span *ngIf="!telefono.valid && telefono.touched">
+        El telefono no es valido!!
+      </span>
+    </p> 
+        
+    
+
+    <input type="submit" value="Guardar" class="btn btn-success">
+
+  </form>
+</div>
