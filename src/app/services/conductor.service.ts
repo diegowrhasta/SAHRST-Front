@@ -44,5 +44,14 @@ export class ConductorService {
     return this._http.get(this.url + 'Conductor/' + id, {headers: headers});
   }
 
+  update(conductor,id): Observable<any>{
+    let json = JSON.stringify(conductor);
+    let params = 'json='+json;
+    let headers = new HttpHeaders().set('Authorization','Bearer '+localStorage.getItem('access_token')).set('Content-Type', 'application/json');
 
+    //let headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    return this._http.put(this.url+'Conductor/' + id, json, {headers: headers});
+  }
+  
 }

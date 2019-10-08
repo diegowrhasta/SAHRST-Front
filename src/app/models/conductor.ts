@@ -1,7 +1,7 @@
 export class Conductor{
     constructor(
-        conductor_id: number,
-        nombres: string,
+        public conductor_id: number,
+        public nombres: string,
         ap_paterno: string,
         ap_materno: string,
         fecha_nacimiento: string,
