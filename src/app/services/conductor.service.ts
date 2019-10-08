@@ -39,5 +39,10 @@ export class ConductorService {
     return this._http.get(this.url+'Conductor', {headers: headers});  
   }
 
+  getConductor(id): Observable<any>{
+    let headers = new HttpHeaders().set('Authorization','Bearer '+localStorage.getItem('access_token')).set('Content-Type', 'application/json');
+    return this._http.get(this.url + 'Conductor/' + id, {headers: headers});
+  }
+
 
 }

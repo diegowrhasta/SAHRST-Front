@@ -15,6 +15,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { ConductorComponent } from './components/conductor/conductor.component';
 import { ConductorAddComponent } from './components/conductor-add/conductor-add.component';
 import { ConductorUpdateComponent } from './components/conductor-update/conductor-update.component';
+import { ConductorDetalleComponent } from './components/conductor-detalle/conductor-detalle.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ConductorUpdateComponent } from './components/conductor-update/conducto
     RegisterComponent,
     ConductorComponent,
     ConductorAddComponent,
-    ConductorUpdateComponent
+    ConductorUpdateComponent,
+    ConductorDetalleComponent
   ],
   imports: [
     BrowserModule,
