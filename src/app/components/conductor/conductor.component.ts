@@ -41,4 +41,17 @@ export class ConductorComponent implements OnInit {
     );
   }
 
+  deleteCar(id){
+    this._conductorService.delete(id).subscribe(
+      response => {
+        this._router.navigate['conductor'];
+        location.reload();
+        alert("Conductor eliminado correctamente");
+      },
+      error => {
+        console.log(<any>error);
+      }
+    );
+  }
+
 }

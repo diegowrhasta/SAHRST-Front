@@ -30,7 +30,7 @@ Lista de Conductores
       </td>
       <td>
         <a [routerLink]="['/conductor-update',conductor.conductor_id]" class="btn btn-warning">Editar</a>
-        <a href="#" class="btn btn-danger">Borrar</a>
+        <a (click)="deleteCar(conductor.conductor_id)" class="btn btn-danger">Borrar</a>
       </td>
     </tr>
   </table>

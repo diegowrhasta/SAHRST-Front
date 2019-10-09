@@ -53,5 +53,10 @@ export class ConductorService {
 
     return this._http.put(this.url+'Conductor/' + id, json, {headers: headers});
   }
+
+  delete(id): Observable<any>{
+    let headers = new HttpHeaders().set('Authorization','Bearer '+localStorage.getItem('access_token')).set('Content-Type', 'application/json');
+    return this._http.delete(this.url+'Conductor/' + id, {headers: headers});
+  }
   
 }
