@@ -1,0 +1,34 @@
+Lista de Tipo de Puntos
+
+<div class="loading" *ngIf="!tipopuntos">
+  Cargando...
+</div>
+<div class="col-md-12" *ngIf="tipopuntos">
+
+  <h2>{{page_title}}</h2>
+
+  <table class="table table-hover table-striped" id="tipopuntos-list">
+    <tr>
+      <th>Nombre</th>
+      <th>Acciones</th>
+    </tr>
+    <tr *ngFor="let tipopunto of tipopuntos">
+      <td class="col-md-7">
+        <a [routerLink]="['/tipo-punto',tipopunto.tipo_punto_id]"><strong>{{tipopunto.nombre}}</strong></a>
+      </td>
+
+      <td>
+        <a [routerLink]="['/tipo-punto-update',tipopunto.tipo_punto_id]" class="btn btn-warning">Editar</a>
+        <a (click)="deleteTipoPunto(tipopunto.tipo_punto_id)" class="btn btn-danger">Borrar</a>
+      </td>
+    </tr>
+  </table>
+
+  <div *ngFor="let conductor of conductores">
+    {{conductor.nombres}}
+    {{conductor.ap_paterno}}
+    {{conductor.ap_materno}}
+    {{conductor.ci}}<br>
+  </div>
+
+</div>

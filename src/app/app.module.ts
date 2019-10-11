@@ -20,6 +20,10 @@ import { RutaComponent } from './components/ruta/ruta.component';
 import { RutaAddComponent } from './components/ruta-add/ruta-add.component';
 import { RutaUpdateComponent } from './components/ruta-update/ruta-update.component';
 import { RutaDetalleComponent } from './components/ruta-detalle/ruta-detalle.component';
+import { TipoPuntoComponent } from './components/tipo-punto/tipo-punto.component';
+import { TipoPuntoAddComponent } from './components/tipo-punto-add/tipo-punto-add.component';
+import { TipoPuntoUpdateComponent } from './components/tipo-punto-update/tipo-punto-update.component';
+import { TipoPuntoDetalleComponent } from './components/tipo-punto-detalle/tipo-punto-detalle.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,11 @@ import { RutaDetalleComponent } from './components/ruta-detalle/ruta-detalle.com
     RutaComponent,
     RutaAddComponent,
     RutaUpdateComponent,
-    RutaDetalleComponent
+    RutaDetalleComponent,
+    TipoPuntoComponent,
+    TipoPuntoAddComponent,
+    TipoPuntoUpdateComponent,
+    TipoPuntoDetalleComponent
   ],
   imports: [
     BrowserModule,
