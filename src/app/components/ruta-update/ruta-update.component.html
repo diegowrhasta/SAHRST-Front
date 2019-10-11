@@ -1,0 +1,24 @@
+<div class="col-md-12">
+  <h2>{{page_title}}</h2>
+
+<div class="alert alert-danger" *ngIf="status_ruta == 'error'">
+  La ruta no se registro correctamente, intentelo de nuevo.
+</div>
+<div class="alert alert-success" *ngIf="status_ruta == 'aceptado'">
+  La ruta fue registrada correctamente.
+</div>
+
+  <form #rutanew="ngForm" (ngSubmit)="onSubmit(rutanew)" class="col-md-5" *ngIf="ruta">
+
+    <p>
+      <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="ruta.nombre" required />
+        <span *ngIf="!nombre.valid && nombre.touched">
+          El nombre no es valido
+        </span>
+    </p>
+
+    <input type="submit" value="Actualizar" class="btn btn-success">
+
+  </form>
+</div>

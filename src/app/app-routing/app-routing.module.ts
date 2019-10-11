@@ -10,15 +10,26 @@ import { ConductorComponent } from '../components/conductor/conductor.component'
 import { ConductorAddComponent } from '../components/conductor-add/conductor-add.component';
 import { ConductorUpdateComponent } from '../components/conductor-update/conductor-update.component';
 import { ConductorDetalleComponent } from "../components/conductor-detalle/conductor-detalle.component";
+import { RutaComponent } from '../components/ruta/ruta.component';
+import { RutaAddComponent } from '../components/ruta-add/ruta-add.component';
+import { RutaUpdateComponent } from '../components/ruta-update/ruta-update.component';
+import { RutaDetalleComponent } from '../components/ruta-detalle/ruta-detalle.component';
 
 const appRoutes: Routes = [
   {path:'', component: LoginComponent},
   {path:'login', component: LoginComponent},
   {path:'registro', component: RegisterComponent},
+  /*****CONDUCTOR****/
   {path:'conductor', component: ConductorComponent},
   {path:'conductor-add', component: ConductorAddComponent},
   {path:'conductor-update/:id', component: ConductorUpdateComponent},
   {path:'conductor/:id', component: ConductorDetalleComponent},
+  /*****RUTA****/
+  {path:'ruta', component:RutaComponent},
+  {path:'ruta-add', component:RutaAddComponent},
+  {path:'ruta-update/:id', component:RutaUpdateComponent},
+  {path:'ruta/:id', component:RutaDetalleComponent},
+
   {path:'**', component: LoginComponent}
 ];
 

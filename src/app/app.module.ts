@@ -16,6 +16,10 @@ import { ConductorComponent } from './components/conductor/conductor.component';
 import { ConductorAddComponent } from './components/conductor-add/conductor-add.component';
 import { ConductorUpdateComponent } from './components/conductor-update/conductor-update.component';
 import { ConductorDetalleComponent } from './components/conductor-detalle/conductor-detalle.component';
+import { RutaComponent } from './components/ruta/ruta.component';
+import { RutaAddComponent } from './components/ruta-add/ruta-add.component';
+import { RutaUpdateComponent } from './components/ruta-update/ruta-update.component';
+import { RutaDetalleComponent } from './components/ruta-detalle/ruta-detalle.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,11 @@ import { ConductorDetalleComponent } from './components/conductor-detalle/conduc
     ConductorComponent,
     ConductorAddComponent,
     ConductorUpdateComponent,
-    ConductorDetalleComponent
+    ConductorDetalleComponent,
+    RutaComponent,
+    RutaAddComponent,
+    RutaUpdateComponent,
+    RutaDetalleComponent
   ],
   imports: [
     BrowserModule,

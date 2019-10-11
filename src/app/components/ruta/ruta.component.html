@@ -1,0 +1,25 @@
+Lista de Rutas
+
+<div class="loading" *ngIf="!rutas">
+  Cargando...
+</div>
+<div class="col-md-12" *ngIf="rutas">
+
+  <h2>{{page_title}}</h2>
+
+  <table class="table table-hover table-striped" id="rutas-list">
+    <tr>
+      <th>Nombre</th>
+    </tr>
+    <tr *ngFor="let ruta of rutas">
+      <td class="col-md-7">
+        <a [routerLink]="['/ruta',ruta.ruta_id]"><strong>{{ruta.nombre}}</strong></a>
+      </td>
+      <td>
+        <a [routerLink]="['/ruta-update',ruta.ruta_id]" class="btn btn-warning">Editar</a>
+        <a (click)="deleteRuta(ruta.ruta_id)" class="btn btn-danger">Borrar</a>
+      </td>
+    </tr>
+  </table>
+
+</div>
