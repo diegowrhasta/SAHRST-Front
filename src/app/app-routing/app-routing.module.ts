@@ -18,6 +18,10 @@ import { TipoPuntoComponent } from '../components/tipo-punto/tipo-punto.componen
 import { TipoPuntoAddComponent } from '../components/tipo-punto-add/tipo-punto-add.component';
 import { TipoPuntoUpdateComponent } from '../components/tipo-punto-update/tipo-punto-update.component';
 import { TipoPuntoDetalleComponent } from '../components/tipo-punto-detalle/tipo-punto-detalle.component';
+import { PuntoComponent } from '../components/punto/punto.component';
+import { PuntoAddComponent } from '../components/punto-add/punto-add.component';
+import { PuntoUpdateComponent } from '../components/punto-update/punto-update.component';
+import { PuntoDetalleComponent } from '../components/punto-detalle/punto-detalle.component';
 
 
 
@@ -40,6 +44,11 @@ const appRoutes: Routes = [
   {path:'tipo-punto-add', component:TipoPuntoAddComponent},
   {path:'tipo-punto-update/:id', component:TipoPuntoUpdateComponent},
   {path:'tipo-punto/:id', component:TipoPuntoDetalleComponent},
+  /*****PUNTO****/
+  {path:'punto', component:PuntoComponent},
+  {path:'punto-add', component:PuntoAddComponent},
+  {path:'punto-update/:id', component:PuntoUpdateComponent},
+  {path:'punto/:id', component:PuntoDetalleComponent},
 
   {path:'**', component: LoginComponent}
 ];

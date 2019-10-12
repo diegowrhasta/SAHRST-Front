@@ -24,6 +24,10 @@ import { TipoPuntoComponent } from './components/tipo-punto/tipo-punto.component
 import { TipoPuntoAddComponent } from './components/tipo-punto-add/tipo-punto-add.component';
 import { TipoPuntoUpdateComponent } from './components/tipo-punto-update/tipo-punto-update.component';
 import { TipoPuntoDetalleComponent } from './components/tipo-punto-detalle/tipo-punto-detalle.component';
+import { PuntoComponent } from './components/punto/punto.component';
+import { PuntoAddComponent } from './components/punto-add/punto-add.component';
+import { PuntoUpdateComponent } from './components/punto-update/punto-update.component';
+import { PuntoDetalleComponent } from './components/punto-detalle/punto-detalle.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +45,11 @@ import { TipoPuntoDetalleComponent } from './components/tipo-punto-detalle/tipo-
     TipoPuntoComponent,
     TipoPuntoAddComponent,
     TipoPuntoUpdateComponent,
-    TipoPuntoDetalleComponent
+    TipoPuntoDetalleComponent,
+    PuntoComponent,
+    PuntoAddComponent,
+    PuntoUpdateComponent,
+    PuntoDetalleComponent
   ],
   imports: [
     BrowserModule,

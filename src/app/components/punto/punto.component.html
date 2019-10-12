@@ -1,0 +1,41 @@
+Lista de Puntos
+
+<div class="loading" *ngIf="!puntos">
+  Cargando...
+</div>
+<div class="col-md-12" *ngIf="puntos">
+
+  <h2>{{page_title}}</h2>
+
+  <table class="table table-hover table-striped" id="puntos-list">
+    <tr>
+      <th>Nombre</th>
+      <th>Tipo</th>
+      <th>Acciones</th>
+    </tr>
+    <tr *ngFor="let punto of puntos">
+      <td class="col-md-7">
+        <a [routerLink]="['/punto',punto.punto_id]"><strong>{{punto.nombre}}</strong></a>
+      </td>
+      <div *ngFor="let tipopunto of tipopuntos">
+        <div *ngIf="tipopunto.tipo_punto_id==punto.tipo_punto_id">
+          <td>
+            <strong>{{tipopunto.nombre}}</strong>
+          </td>
+        </div>
+      </div>
+      <td>
+        <a [routerLink]="['/punto-update',punto.punto_id]" class="btn btn-warning">Editar</a>
+        <a (click)="deletePunto(punto.punto_id)" class="btn btn-danger">Borrar</a>
+      </td>
+    </tr>
+  </table>
+
+  <div *ngFor="let conductor of conductores">
+    {{conductor.nombres}}
+    {{conductor.ap_paterno}}
+    {{conductor.ap_materno}}
+    {{conductor.ci}}<br>
+  </div>
+
+</div>
