@@ -49,7 +49,7 @@ export class TipoPuntoService {
     return this._http.put(this.url+'Tipo_Punto/' + id, json, {headers: headers});
   }
 
-  delete(id): Observable<any>{
+  deleteTipoPunto(id): Observable<any>{
     let headers = new HttpHeaders().set('Authorization','Bearer '+localStorage.getItem('access_token')).set('Content-Type', 'application/json');
     return this._http.delete(this.url+'Tipo_Punto/' + id, {headers: headers});
   }

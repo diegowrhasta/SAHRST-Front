@@ -38,8 +38,8 @@ export class TipoPuntoComponent implements OnInit {
     );
   }
 
-  deleteCar(id){
-    this._tipoPuntoService.delete(id).subscribe(
+  deleteTipoPunto(id){
+    this._tipoPuntoService.deleteTipoPunto(id).subscribe(
       response => {
         this._router.navigate['tipopunto'];
         location.reload();
