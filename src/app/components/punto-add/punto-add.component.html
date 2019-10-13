@@ -1,3 +1,35 @@
-<p>
-  punto-add works!
-</p>
+<div class="col-md-12">
+  <h2>{{page_title}}</h2>
+
+<div class="alert alert-danger" *ngIf="status_car == 'error'">
+  El punto no se registro correctamente, intentelo de nuevo.
+</div>
+<div class="alert alert-success" *ngIf="status_car == 'aceptado'">
+  El punto fue registrado correctamente.
+</div>
+
+  <form #puntonew="ngForm" (ngSubmit)="onSubmit(puntonew)" class="col-md-5">
+
+    <p>
+      <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="punto.nombre" required />
+        <span *ngIf="!nombre.valid && nombre.touched">
+          El nombre del punto no es valido
+        </span>
+    </p>
+    
+    <p>
+      <label for="tipo_punto_id">Tipo</label>    
+      <select name="tipo_punto_id" #punto_id="ngModel" [(ngModel)]="punto.tipo_punto_id">
+        
+          <option *ngFor="let tipopunto of tipopuntos" [value]="tipopunto.tipo_punto_id">{{tipopunto.tipo_punto_id}} {{tipopunto.nombre}}</option> 
+        
+      </select>
+    </p>
+
+    <br><br><br>
+
+    <input type="submit" value="Guardar" class="btn btn-success">
+
+  </form>
+</div>
