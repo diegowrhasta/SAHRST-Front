@@ -1,24 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { UserService } from '../../services/user.service';
-import { Conductor } from '../../models/conductor';
 import { ConductorService } from '../../services/conductor.service';
+import { Conductor } from '../../models/conductor';
+
+import { RutaService } from "../../services/ruta.service";
+import { Ruta } from "../../models/ruta";
 
 @Component({
   selector: 'app-conductor-update',
   templateUrl: './conductor-update.component.html',
   styleUrls: ['./conductor-update.component.css'],
-  providers: [UserService, ConductorService]
+  providers: [UserService, ConductorService, RutaService]
 })
 export class ConductorUpdateComponent implements OnInit {
   public page_title: string; 
   public conductor: Conductor;
+  public rutas: Array<Ruta>;
 
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
     private _userService: UserService,
-    private _conductorService: ConductorService
+    private _conductorService: ConductorService,
+    private _rutaService: RutaService
   ) { }
 
   ngOnInit() {
@@ -26,6 +31,18 @@ export class ConductorUpdateComponent implements OnInit {
       let id = +params['id'];
       this.getConductor(id);
     });
+
+    this._rutaService.getRutas().subscribe(
+      response => {
+        //if( response.status == 'success' ){
+          this.rutas = response;
+        //}
+        console.log(response);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
   
   

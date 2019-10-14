@@ -2,12 +2,13 @@ export class Conductor{
     constructor(
         public conductor_id: number,
         public nombres: string,
-        ap_paterno: string,
-        ap_materno: string,
-        fecha_nacimiento: string,
-        ci: number,
-        direccion: string,
-        celular: number,
-        telefono: number
+        public ap_paterno: string,
+        public ap_materno: string,
+        public fecha_nacimiento: string,
+        public ci: number,
+        public direccion: string,
+        public celular: number,
+        public telefono: number,
+        public ruta_id: number
     ){}
 }

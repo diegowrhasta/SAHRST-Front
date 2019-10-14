@@ -13,6 +13,7 @@ Lista de Conductores
       <th>Apellido Paterno</th>
       <th>Apellido Materno</th>
       <th>C.I.</th>
+      <th>Ruta</th>
       <th>Acciones</th>
     </tr>
     <tr *ngFor="let conductor of conductores">
@@ -28,6 +29,15 @@ Lista de Conductores
       <td>
         {{conductor.ci}}
       </td>
+      
+      <div *ngFor="let ruta of rutas">
+        <div *ngIf="conductor.ruta_id==ruta.ruta_id">
+          <td>
+            <strong>{{ruta.nombre}}</strong>
+          </td>
+        </div>
+      </div>
+      
       <td>
         <a [routerLink]="['/conductor-update',conductor.conductor_id]" class="btn btn-warning">Editar</a>
         <a (click)="deleteCar(conductor.conductor_id)" class="btn btn-danger">Borrar</a>
