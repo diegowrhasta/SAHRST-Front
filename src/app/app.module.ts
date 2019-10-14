@@ -28,6 +28,8 @@ import { PuntoComponent } from './components/punto/punto.component';
 import { PuntoAddComponent } from './components/punto-add/punto-add.component';
 import { PuntoUpdateComponent } from './components/punto-update/punto-update.component';
 import { PuntoDetalleComponent } from './components/punto-detalle/punto-detalle.component';
+import { PuntoRutaComponent } from './components/punto-ruta/punto-ruta.component';
+import { PuntoRutaAddComponent } from './components/punto-ruta-add/punto-ruta-add.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import { PuntoDetalleComponent } from './components/punto-detalle/punto-detalle.
     PuntoComponent,
     PuntoAddComponent,
     PuntoUpdateComponent,
-    PuntoDetalleComponent
+    PuntoDetalleComponent,
+    PuntoRutaComponent,
+    PuntoRutaAddComponent
   ],
   imports: [
     BrowserModule,

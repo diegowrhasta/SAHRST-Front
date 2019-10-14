@@ -23,6 +23,8 @@ import { PuntoAddComponent } from '../components/punto-add/punto-add.component';
 import { PuntoUpdateComponent } from '../components/punto-update/punto-update.component';
 import { PuntoDetalleComponent } from '../components/punto-detalle/punto-detalle.component';
 
+import { PuntoRutaComponent } from '../components/punto-ruta/punto-ruta.component';
+import { PuntoRutaAddComponent } from '../components/punto-ruta-add/punto-ruta-add.component';
 
 
 const appRoutes: Routes = [
@@ -49,6 +51,9 @@ const appRoutes: Routes = [
   {path:'punto-add', component:PuntoAddComponent},
   {path:'punto-update/:id', component:PuntoUpdateComponent},
   {path:'punto/:id', component:PuntoDetalleComponent},
+  /*****PUNTO-RUTA****/
+  {path:'punto-ruta', component:PuntoRutaComponent},
+  {path:'punto-ruta-add', component:PuntoRutaAddComponent},
 
   {path:'**', component: LoginComponent}
 ];

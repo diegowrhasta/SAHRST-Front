@@ -1,0 +1,52 @@
+Lista de Puntos - Rutas
+
+<div class="loading" *ngIf="!puntorutas">
+  Cargando...
+</div>
+<div class="col-md-12" *ngIf="puntorutas">
+
+  <h2>{{page_title}}</h2>
+
+  <table class="table table-hover table-striped" id="puntos-list">
+    <tr>
+      <th>Punto</th>
+      <th>Posicion</th>
+      <th>Ruta</th>
+      <th>Acciones</th>
+    </tr>
+    <tr *ngFor="let puntoruta of puntorutas">
+      <div *ngFor="let punto of puntos">
+        <div *ngIf="puntoruta.punto_id==punto.punto_id">
+          <td>
+            <strong>{{punto.nombre}}</strong>
+          </td>
+        </div>
+      </div>
+      
+      <td>
+        <strong>{{puntoruta.posicion}}</strong>
+      </td>
+
+      <div *ngFor="let ruta of rutas">
+        <div *ngIf="puntoruta.ruta_id==ruta.ruta_id">
+          <td>
+            <strong>{{ruta.nombre}}</strong>
+          </td>
+        </div>
+      </div>
+
+      <td>
+        <a [routerLink]="['/punto-ruta-update',puntoruta.punto_ruta_id]" class="btn btn-warning">Editar</a>
+        <a (click)="deletePuntoRuta(puntoruta.punto_ruta_id)" class="btn btn-danger">Borrar</a>
+      </td>
+    </tr>
+  </table>
+
+  <div *ngFor="let conductor of conductores">
+    {{conductor.nombres}}
+    {{conductor.ap_paterno}}
+    {{conductor.ap_materno}}
+    {{conductor.ci}}<br>
+  </div>
+
+</div>

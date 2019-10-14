@@ -1,0 +1,49 @@
+<div class="col-md-12">
+  <h2>{{page_title}}</h2>
+
+<div class="alert alert-danger" *ngIf="status_car == 'error'">
+  El punto-ruta no se registro correctamente, intentelo de nuevo.
+</div>
+<div class="alert alert-success" *ngIf="status_car == 'aceptado'">
+  El punto-ruta fue registrado correctamente.
+</div>
+
+  <form #puntorutanew="ngForm" (ngSubmit)="onSubmit(puntorutanew)" class="col-md-5">
+
+    <p>
+      <label for="punto_id">Punto</label>    
+      <select name="punto_id" #punto_id="ngModel" [(ngModel)]="puntoruta.punto_id">
+        
+          <option *ngFor="let punto of puntos" [value]="punto.punto_id">{{punto.punto_id}} {{punto.nombre}}</option> 
+        
+      </select>
+    </p>
+
+    <br><br>
+
+    <p>
+      <label for="ruta_id">Ruta</label>    
+      <select name="ruta_id" #ruta_id="ngModel" [(ngModel)]="puntoruta.ruta_id">
+        
+          <option *ngFor="let ruta of rutas" [value]="ruta.ruta_id">{{ruta.ruta_id}} {{ruta.nombre}}</option> 
+        
+      </select>
+    </p>
+
+    <br><br>
+
+    <p>
+      <label for="posicion">Posición</label>
+        <input type="number" name="posicion" #posicion="ngModel" [(ngModel)]="puntoruta.posicion" required />
+        <span *ngIf="!posicion.valid && posicion.touched">
+          La posicion del punto no es valido
+        </span>
+    </p>
+    
+
+    <br><br><br>
+
+    <input type="submit" value="Guardar" class="btn btn-success">
+
+  </form>
+</div>
