@@ -1,12 +1,42 @@
 <div class="col-md-12" *ngIf="conductor">
 
-  <h1>{{conductor.conductor_id}}</h1>
-  <p><strong>Conductor</strong></p>
+  <!--<h1>{{conductor.conductor_id}}</h1>-->
+  <p><strong>INFORMACIÓN DEL CONDUCTOR:</strong></p>
   <p>
+      <label >Nombres: </label>    
       {{conductor.nombres}}
   </p>
   <p>
+    <label>Apellido paterno: </label>     
+      {{conductor.ap_paterno}}
+  </p>
+  <p>
+    <label>Apellido materno: </label>     
+      {{conductor.ap_materno}}
+  </p>
+  <p>
+    <label>Fecha de nacimiento: </label>     
+      {{conductor.fecha_nacimiento}}
+  </p>
+  <p>
+    <label>Carnet de Identidad: </label>     
       {{conductor.ci}}
+  </p>
+  <p>
+    <label>Dirección: </label>     
+      {{conductor.direccion}}
+  </p>
+  <p>
+    <label>Celular: </label>     
+      {{conductor.celular}}
+  </p>
+  <p>
+    <label>Teléfono: </label>     
+      {{conductor.telefono}}
+  </p>
+  <p>
+    <label>Apellido paterno: </label>     
+      {{conductor.ap_paterno}}
   </p>
 
 </div>
