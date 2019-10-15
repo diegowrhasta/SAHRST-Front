@@ -9,25 +9,22 @@ Lista de Conductores
 
   <table class="table table-hover table-striped" id="conductores-list">
     <tr>
-      <th>Nombre</th>
-      <th>Apellido Paterno</th>
-      <th>Apellido Materno</th>
-      <th>C.I.</th>
+      <th>Nombre completo</th>
+      <th>Carnet de identidad</th>
+      <th>Celular</th>
       <th>Ruta</th>
+      <th>Siguiente Punto de control</th>
       <th>Acciones</th>
     </tr>
     <tr *ngFor="let conductor of conductores">
-      <td class="col-md-7">
-        <a [routerLink]="['/conductor',conductor.conductor_id]"><strong>{{conductor.nombres}}</strong></a>
-      </td>
-      <td>
-        {{conductor.ap_paterno}}
-      </td>
-      <td>
-        {{conductor.ap_materno}}
+      <td class="col-md-4">
+        <a [routerLink]="['/conductor',conductor.conductor_id]"><strong>{{conductor.nombres}} {{conductor.ap_paterno}} {{conductor.ap_materno}}</strong></a>
       </td>
       <td>
         {{conductor.ci}}
+      </td>
+      <td>
+        {{conductor.celular}}
       </td>
       
       <div *ngFor="let ruta of rutas">
@@ -38,6 +35,10 @@ Lista de Conductores
         </div>
       </div>
       
+      <td>
+        {{conductor.next_punto_control}}
+      </td>
+
       <td>
         <a [routerLink]="['/conductor-update',conductor.conductor_id]" class="btn btn-warning">Editar</a>
         <a (click)="deleteCar(conductor.conductor_id)" class="btn btn-danger">Borrar</a>
