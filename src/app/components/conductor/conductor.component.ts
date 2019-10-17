@@ -70,5 +70,8 @@ export class ConductorComponent implements OnInit {
       }
     );
   }
-
+  
+  refresh(): void {
+    window.location.reload();
+  }
 }
