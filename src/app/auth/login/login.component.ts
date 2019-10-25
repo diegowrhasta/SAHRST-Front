@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   f: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router:Router) { }
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.f = this.formBuilder.group({
@@ -25,11 +25,11 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.authService.login(this.f.value).subscribe(
-      (resp) => { 
+      (resp) => {
         this.router.navigate(['conductor']);
-        console.log(resp); 
+        console.log(resp);
       },
-      (errorResponse: HttpErrorResponse) => {console.log(errorResponse);}
+      (errorResponse: HttpErrorResponse) => {console.log(errorResponse); }
     );
   }
 
