@@ -33,7 +33,8 @@ export class TipoPuntoComponent implements OnInit {
         console.log(response);
       },
       error => {
-        console.log(error);
+        //console.log(error);
+        this._router.navigate(['login']).then();
       }
     );
   }

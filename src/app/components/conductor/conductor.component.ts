@@ -41,7 +41,8 @@ export class ConductorComponent implements OnInit {
         console.log(response);
       },
       error => {
-        console.log(error);
+        //console.log(error);
+        this._router.navigate(['login']).then();
       }
     );
 
@@ -53,7 +54,8 @@ export class ConductorComponent implements OnInit {
         console.log(response);
       },
       error => {
-        console.log(error);
+        //console.log(error);
+        this._router.navigate(['login']).then();
       }
     );
   }

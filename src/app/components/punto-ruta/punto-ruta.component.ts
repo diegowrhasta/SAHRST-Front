@@ -43,7 +43,8 @@ export class PuntoRutaComponent implements OnInit {
         console.log(response);
       },
       error => {
-        console.log(error);
+        //console.log(error);
+        this._router.navigate(['login']).then();
       }
     );
     this._rutaService.getRutas().subscribe(

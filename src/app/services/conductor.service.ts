@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { GLOBAL } from './global';
 import { Conductor } from '../models/conductor';
+import {ActivatedRoute, Router} from '@angular/router';
 
 
 @Injectable()
@@ -13,6 +14,7 @@ export class ConductorService {
   //headers = new Headers();
 
   constructor(
+    private router: Router,
     public _http: HttpClient
     ) { 
     this.url = GLOBAL.url;
@@ -35,8 +37,12 @@ export class ConductorService {
   }
 
   getConductores():Observable<any>{
-    let headers = new HttpHeaders().set('Authorization','Bearer '+localStorage.getItem('access_token')).set('Content-Type', 'application/json');
-    return this._http.get(this.url+'Conductor', {headers: headers});  
+    //if(localStorage.getItem('access_token')){
+      let headers = new HttpHeaders().set('Authorization','Bearer '+localStorage.getItem('access_token')).set('Content-Type', 'application/json');
+      return this._http.get(this.url+'Conductor', {headers: headers});  
+    //}
+    //console.log("no logueado");
+    //this.router.navigate(['login']).then();
   }
 
   getConductor(id): Observable<any>{
