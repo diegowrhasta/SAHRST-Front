@@ -3,6 +3,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/do';
 import {GLOBAL} from '../../services/global';
+import {error} from 'util';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Injectable()
 export class AuthService {
@@ -22,9 +24,13 @@ export class AuthService {
   login(credentials: {email: string, password: string}): Observable<boolean> {
     return this.http.post<any>(this.url + 'auth/login', credentials)
     .do(data => {
-      this.token = data.access_token;
-      localStorage.setItem('access_token', this.token);
-    });
+        this.token = data.access_token;
+        localStorage.setItem('access_token', this.token);
+      },
+      e => {
+        console.log(<any>e);
+      }
+    );
   }
 
   userData(): Observable<any> {
@@ -33,6 +39,9 @@ export class AuthService {
       .do( userData => {
           this.identity = userData;
           localStorage.setItem('identity', JSON.stringify(this.identity));
+        },
+        (errors) => {
+          console.log(<any>errors);
         }
       );
   }
@@ -55,5 +64,11 @@ export class AuthService {
       this.token = null;
     }
     return this.token;
+  }
+
+  nullPublics() {
+    this.identity = null;
+    this.token = null;
+    return true;
   }
 }
