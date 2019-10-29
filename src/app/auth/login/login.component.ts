@@ -25,9 +25,9 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.authService.login(this.f.value).subscribe(
-      (resp) => {
-        this.router.navigate(['conductor']);
-        console.log(resp);
+      () => {
+        this.authService.userData().subscribe();
+        this.router.navigate(['conductor']).then();
       },
       (errorResponse: HttpErrorResponse) => {console.log(errorResponse); }
     );
