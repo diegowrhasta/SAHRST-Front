@@ -6,22 +6,26 @@ import { Conductor } from '../../models/conductor';
 
 import { RutaService } from "../../services/ruta.service";
 import { Ruta } from "../../models/ruta";
+import { Punto } from "../../models/punto";
+import { PuntoService } from '../../services/punto.service';
 
 @Component({
   selector: 'app-conductor',
   templateUrl: './conductor.component.html',
   styleUrls: ['./conductor.component.css'],
-  providers: [UserService, ConductorService, RutaService]
+  providers: [UserService, ConductorService, RutaService, PuntoService]
 })
 export class ConductorComponent implements OnInit {
   public page_title: string;
   public conductores: Array<Conductor>;
+  public puntos: Array<Punto>;
   public rutas: Array<Ruta>;
 
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
     private _userService: UserService,
+    private _puntoService: PuntoService,
     private _conductorService: ConductorService,
     private _rutaService: RutaService
   ) { 
@@ -44,8 +48,8 @@ export class ConductorComponent implements OnInit {
         //console.log(error);
         this._router.navigate(['login']).then();
       }
-    );
-
+    )
+    ;
     this._rutaService.getRutas().subscribe(
       response => {
         //if( response.status == 'success' ){

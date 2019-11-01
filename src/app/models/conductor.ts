@@ -10,6 +10,7 @@ export class Conductor{
         public celular: number,
         public telefono: number,
         public ruta_id: number,
+        public avatar: string,
         public next_punto_control: number
     ){}
 }
