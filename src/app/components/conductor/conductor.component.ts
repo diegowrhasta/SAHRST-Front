@@ -4,8 +4,8 @@ import { UserService } from '../../services/user.service';
 import { ConductorService } from '../../services/conductor.service';
 import { Conductor } from '../../models/conductor';
 
-import { RutaService } from "../../services/ruta.service";
-import { Ruta } from "../../models/ruta";
+import { RutaService } from '../../services/ruta.service';
+import { Ruta } from '../../models/ruta';
 
 @Component({
   selector: 'app-conductor',
@@ -24,56 +24,50 @@ export class ConductorComponent implements OnInit {
     private _userService: UserService,
     private _conductorService: ConductorService,
     private _rutaService: RutaService
-  ) { 
-    this.page_title = 'Conductores';
-    //this.identity = this._userService.getIdentity();
-    //this.token = this._userService.getToken();
-    
+  ) {
+    this.page_title = 'Listado de Conductores';
   }
 
   ngOnInit() {
     console.log('Conductor cargado correctamente');
     this._conductorService.getConductores().subscribe(
       response => {
-        //if( response.status == 'success' ){
           this.conductores = response;
-        //}
         console.log(response);
       },
       error => {
-        //console.log(error);
         this._router.navigate(['login']).then();
       }
     );
 
     this._rutaService.getRutas().subscribe(
       response => {
-        //if( response.status == 'success' ){
           this.rutas = response;
-        //}
         console.log(response);
       },
       error => {
-        //console.log(error);
         this._router.navigate(['login']).then();
       }
     );
   }
 
-  deleteCar(id){
+  deleteCar(id) {
     this._conductorService.delete(id).subscribe(
       response => {
         this._router.navigate['conductor'];
         location.reload();
-        alert("Conductor eliminado correctamente");
+        alert('Conductor eliminado correctamente');
       },
       error => {
         console.log(<any>error);
       }
     );
   }
-  
+
   refresh(): void {
     window.location.reload();
+  }
+  new(): void {
+    this._router.navigate(['conductor-add']);
   }
 }

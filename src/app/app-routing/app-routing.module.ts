@@ -1,8 +1,5 @@
 import { ModuleWithProviders} from '@angular/core';
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-
 import { LoginComponent } from '../auth/login/login.component';
 import { RegisterComponent } from '../components/register/register.component';
 import { ConductorComponent } from '../components/conductor/conductor.component';

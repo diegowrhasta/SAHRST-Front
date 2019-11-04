@@ -3,8 +3,6 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/do';
 import {GLOBAL} from '../../services/global';
-import {error} from 'util';
-import {ActivatedRoute, Router} from '@angular/router';
 
 @Injectable()
 export class AuthService {
