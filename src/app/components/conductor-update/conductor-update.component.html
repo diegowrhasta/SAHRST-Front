@@ -1,83 +1,95 @@
-<div class="col-md-12">
-  <h2>{{page_title}}</h2>
-
-<div class="alert alert-danger" *ngIf="status_car == 'error'">
-  El conductor no se registro correctamente, intentelo de nuevo.
-</div>
-<div class="alert alert-success" *ngIf="status_car == 'aceptado'">
-  El conductor fue registrado correctamente.
-</div>
-
-  <form #conductornew="ngForm" (ngSubmit)="onSubmit(conductornew)" class="col-md-5" *ngIf="conductor">
-
-    <p>
-      <label for="nombres">Nombres</label>
-        <input type="text" name="nombres" #nombres="ngModel" [(ngModel)]="conductor.nombres" required />
-        <span *ngIf="!nombres.valid && nombres.touched">
-          Los nombres no son validos
-        </span>
-    </p>
-    <p>
-      <label for="ap_paterno">Apellido Paterno</label>
-        <input type="text" name="ap_paterno" #ap_paterno="ngModel" [(ngModel)]="conductor.ap_paterno" required />
-        <span *ngIf="!ap_paterno.valid && ap_paterno.touched">
-          El apellido paterno no es valido!!
-        </span>
-    </p>
-    <p>
-      <label for="ap_materno">Apellido Materno</label>
-        <input type="text" name="ap_materno" #ap_materno="ngModel" [(ngModel)]="conductor.ap_materno" required />
-        <span *ngIf="!ap_materno.valid && ap_materno.touched">
-        El apellido materno no es valido!!
-      </span>
-    </p>    
-    <p>
-      <label for="fecha_nacimiento">Fecha de nacimiento</label>
-        <input type="text" name="fecha_nacimiento" #fecha_nacimiento="ngModel" [(ngModel)]="conductor.fecha_nacimiento" required />
-        <span *ngIf="!fecha_nacimiento.valid && fecha_nacimiento.touched">
-        La fecha de nacimiento no es valido!!
-      </span>
-    </p>    
-    <p>
-      <label for="ci">CI</label>
-        <input type="number" name="ci" #ci="ngModel" [(ngModel)]="conductor.ci" required />
-        <span *ngIf="!ci.valid && ci.touched">
-        El CI no es valido!!
-      </span>
-    </p>    
-    <p>
-      <label for="direccion">direccion</label>
-        <input type="text" name="direccion" #direccion="ngModel" [(ngModel)]="conductor.direccion" required />
-        <span *ngIf="!direccion.valid && direccion.touched">
-        La direccion no es valido!!
-      </span>
-    </p>    
-    <p>
-      <label for="celular">Celular</label>
-        <input type="number" name="celular" #celular="ngModel" [(ngModel)]="conductor.celular" required />
-        <span *ngIf="!celular.valid && celular.touched">
-        El celular no es valido!!
-      </span>
-    </p>    
-    <p>
-      <label for="telefono">Telefono</label>
-        <input type="number" name="telefono" #telefono="ngModel" [(ngModel)]="conductor.telefono" required />
-        <span *ngIf="!telefono.valid && telefono.touched">
-        El telefono no es valido!!
-      </span>
-    </p> 
-        
-    <br>    
-    <p>
-      <label for="ruta_id">Ruta</label>    
-      <select name="ruta_id" #ruta_id="ngModel" [(ngModel)]="conductor.ruta_id">
-        
-          <option *ngFor="let ruta of rutas" [value]="ruta.ruta_id">{{ruta.ruta_id}} {{ruta.nombre}}</option> 
-        
-      </select>
-    </p> 
-
-    <input type="submit" value="Actualizar" class="btn btn-success">
-
-  </form>
+<div class="content">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h2 class="box-title">{{page_title}}</h2>
+          </div>
+        </div>
+      </div>
+      <form #conductornew="ngForm" (ngSubmit)="onSubmit(conductornew)" *ngIf="conductor">
+        <div class="box-body">
+          <div class="row">
+            <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+              <div class="form-group">
+                <label for="nombres">Nombres</label>
+                <input class="form-control" id="nombres" type="text" name="nombres" #nombres="ngModel" [(ngModel)]="conductor.nombres" required />
+                <span *ngIf="!nombres.valid && nombres.touched">Los nombres no son validos</span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+              <div class="form-group">
+                <label for="ap_paterno">Apellido Paterno</label>
+                <input class="form-control" id="ap_paterno" type="text" name="ap_paterno" #ap_paterno="ngModel" [(ngModel)]="conductor.ap_paterno" required />
+                <span *ngIf="!ap_paterno.valid && ap_paterno.touched">El apellido paterno no es valido!!</span>
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+              <div class="form-group">
+                <label for="ap_materno">Apellido Materno</label>
+                <input class="form-control" id="ap_materno" type="text" name="ap_materno" #ap_materno="ngModel" [(ngModel)]="conductor.ap_materno" required />
+                <span *ngIf="!ap_materno.valid && ap_materno.touched">El apellido materno no es valido!!</span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+              <div class="form-group">
+                <label for="fecha_nacimiento">Fecha de nacimiento</label>
+                <input class="form-control" id="fecha_nacimiento" type="date" name="fecha_nacimiento" #fecha_nacimiento="ngModel" [(ngModel)]="conductor.fecha_nacimiento" required />
+                <span *ngIf="!fecha_nacimiento.valid && fecha_nacimiento.touched">La fecha de nacimiento no es valido!!</span>
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+              <div class="form-group">
+                <label for="ci">CI</label>
+                <input class="form-control" id="ci" type="number" name="ci" #ci="ngModel" [(ngModel)]="conductor.ci" required />
+                <span *ngIf="!ci.valid && ci.touched">El CI no es valido!!</span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+              <div class="form-group">
+                <label for="direccion">Direccion</label>
+                <input class="form-control" id="direccion" type="text" name="direccion" #direccion="ngModel" [(ngModel)]="conductor.direccion" required />
+                <span *ngIf="!direccion.valid && direccion.touched">La direccion no es valido!!</span>
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+              <div class="form-group">
+                <label for="celular">Celular</label>
+                <input class="form-control" id="celular" type="number" name="celular" #celular="ngModel" [(ngModel)]="conductor.celular" required />
+                <span *ngIf="!celular.valid && celular.touched">El celular no es valido!!</span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+              <div class="form-group">
+                <label for="telefono">Telefono</label>
+                <input class="form-control" id="telefono" type="number" name="telefono" #telefono="ngModel" [(ngModel)]="conductor.telefono" required />
+                <span *ngIf="!telefono.valid && telefono.touched">El telefono no es valido!!</span>
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+              <div class="form-group">
+                <label for="ruta_id">Ruta</label>
+                <select class="form-control" id="ruta_id" name="ruta_id" #ruta_id="ngModel" [(ngModel)]="conductor.ruta_id">
+                  <option *ngFor="let ruta of rutas" [value]="ruta.ruta_id">{{ruta.ruta_id}}. {{ruta.nombre}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="box-footer">
+          <input type="submit" value="Guardar" class="btn btn-success">
+          <a (click)="back()"><button class="btn btn-warning">Cancelar</button></a>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>

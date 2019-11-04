@@ -4,8 +4,8 @@ import { UserService } from '../../services/user.service';
 import { ConductorService } from '../../services/conductor.service';
 import { Conductor } from '../../models/conductor';
 
-import { RutaService } from "../../services/ruta.service";
-import { Ruta } from "../../models/ruta";
+import { RutaService } from '../../services/ruta.service';
+import { Ruta } from '../../models/ruta';
 
 @Component({
   selector: 'app-conductor-update',
@@ -14,7 +14,7 @@ import { Ruta } from "../../models/ruta";
   providers: [UserService, ConductorService, RutaService]
 })
 export class ConductorUpdateComponent implements OnInit {
-  public page_title: string; 
+  public page_title: string;
   public conductor: Conductor;
   public rutas: Array<Ruta>;
 
@@ -28,33 +28,31 @@ export class ConductorUpdateComponent implements OnInit {
 
   ngOnInit() {
     this._route.params.subscribe(params => {
-      let id = +params['id'];
+      const id = +params['id'];
       this.getConductor(id);
     });
 
     this._rutaService.getRutas().subscribe(
       response => {
-        //if( response.status == 'success' ){
+        // if( response.status == 'success' ){
           this.rutas = response;
-        //}
+        // }
         console.log(response);
       },
       error => {
-        //console.log(error);
+        console.log(error);
         this._router.navigate(['login']).then();
       }
     );
   }
-  
-  
-  getConductor(id){
+
+
+  getConductor(id) {
 
       this._conductorService.getConductor(id).subscribe(
         response => {
-          //if( response.status == 'success' ){
             this.conductor = response;
-            this.page_title = 'Editar ' + this.conductor.nombres;//titulo guardar (funciona con el error)
-          //}
+            this.page_title = 'Editar información de Conductor: ' + this.conductor.nombres; // titulo guardar (funciona con el error)
           console.log(response);
         },
         error => {
@@ -63,19 +61,22 @@ export class ConductorUpdateComponent implements OnInit {
       );
   }
 
-  onSubmit(form){
-    //Servicio
+  onSubmit(form) {
+    // Servicio
     console.log(this.conductor.conductor_id);
-    this._conductorService.update(this.conductor,this.conductor.conductor_id).subscribe(
+    this._conductorService.update(this.conductor, this.conductor.conductor_id).subscribe(
       response => {
-        alert("Actualización exitosa");
-        console.log(response);
+        alert('Actualización exitosa');
+        this._router.navigate(['conductor']);
       },
       error => {
-        alert("No se actualizó, por favor corrija los datos ingresados");
+        alert('No se actualizó, por favor corrija los datos ingresados');
         console.log(<any>error);
       }
     );
   }
 
+  back() {
+    this._router.navigate(['conductor']);
+  }
 }
