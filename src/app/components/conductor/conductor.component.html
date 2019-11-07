@@ -21,6 +21,7 @@
             <div class="table-responsive">
               <table class="table table-bordered table-striped table-hover" id="conductores-list">
                 <tr>
+                  <th>Perfil</th>
                   <th>Nombre completo</th>
                   <th>Carnet de identidad</th>
                   <th>Celular</th>
@@ -29,6 +30,9 @@
                   <th colspan="2">Acciones</th>
                 </tr>
                 <tr *ngFor="let conductor of conductores">
+                  <td>
+                    <img src="http://157.245.175.97/uploads/avatars/{{conductor.avatar}}" width=50 height=50>
+                  </td>
                   <td>
                     <a [routerLink]="['/conductor',conductor.conductor_id]"><strong>{{conductor.nombres}} {{conductor.ap_paterno}} {{conductor.ap_materno}}</strong></a>
                   </td>

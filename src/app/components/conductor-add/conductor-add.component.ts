@@ -33,7 +33,8 @@ export class ConductorAddComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.conductor = new Conductor(1, '', '', '', '', 1, '', 1, 1, 1, 1);
+    this.conductor = new Conductor(1,'','','','',1,'',1,1,1,'',1);
+
     this._rutaService.getRutas().subscribe(
       response => {
           this.rutas = response;
