@@ -1,5 +1,3 @@
-<div class="col-md-12">
-  <h2>{{page_title}}</h2>
 
 <div class="alert alert-danger" *ngIf="status_car == 'error'">
   La ruta no se registro correctamente, intentelo de nuevo.
@@ -16,9 +14,8 @@
         <span *ngIf="!nombre.valid && nombre.touched">
           El nombre no es valido
         </span>
-    </p>    
+    </p>
 
     <input type="submit" value="Guardar" class="btn btn-success">
 
   </form>
-</div>

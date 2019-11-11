@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { routing, appRoutingProviders } from './app-routing/app-routing.module';
+import { routing } from './app-routing/app-routing.module';
 import { AdminModule } from './admin/admin.module';
 import { AuthModule } from './auth/auth.module';
 import { AppComponent } from './app.component';
@@ -26,6 +26,9 @@ import { PuntoUpdateComponent } from './components/punto-update/punto-update.com
 import { PuntoDetalleComponent } from './components/punto-detalle/punto-detalle.component';
 import { PuntoRutaComponent } from './components/punto-ruta/punto-ruta.component';
 import { PuntoRutaAddComponent } from './components/punto-ruta-add/punto-ruta-add.component';
+import {NgbActiveModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ModalAboutComponent } from './modal-about/modal-about.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +52,9 @@ import { PuntoRutaAddComponent } from './components/punto-ruta-add/punto-ruta-ad
     PuntoUpdateComponent,
     PuntoDetalleComponent,
     PuntoRutaComponent,
-    PuntoRutaAddComponent
+    PuntoRutaAddComponent,
+    ModalAboutComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -57,9 +62,15 @@ import { PuntoRutaAddComponent } from './components/punto-ruta-add/punto-ruta-ad
     FormsModule,
     HttpClientModule,
     AuthModule,
-    AdminModule
+    AdminModule,
+    NgbModule.forRoot()
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    NgbActiveModal
+  ],
+  bootstrap: [AppComponent],
+  entryComponents: [
+    ModalAboutComponent
+  ]
 })
 export class AppModule { }

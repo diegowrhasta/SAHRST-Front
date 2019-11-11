@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { RutaService } from '../../services/ruta.service';
 import { Ruta } from '../../models/ruta';
+import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-ruta-add',
@@ -11,6 +12,8 @@ import { Ruta } from '../../models/ruta';
   providers: [UserService, RutaService]
 })
 export class RutaAddComponent implements OnInit {
+
+  @Input() title = `Information`;
 
   public page_title: string;
   public identity;
@@ -22,30 +25,29 @@ export class RutaAddComponent implements OnInit {
     private _route: ActivatedRoute,
     private _router: Router,
     private _userService: UserService,
-    private _rutaService: RutaService
-  ) { 
+    private _rutaService: RutaService,
+    private _activarModal: NgbActiveModal
+  ) {
     this.page_title = 'Crear nueva ruta';
-    //this.identity = this._userService.getIdentity();
-    //this.token = this._userService.getToken();
   }
 
   ngOnInit() {
-    this.ruta = new Ruta(1,'');
+    this.ruta = new Ruta(1, '');
   }
 
-  onSubmit(form){
+  onSubmit(form) {
     console.log(this.ruta);
     console.log(this._rutaService.pruebas());
-    
+
     this._rutaService.agregar(this.ruta).subscribe(
       response => {
         this._router.navigate(['ruta']);
         console.log(response);
-        this.status_ruta ='aceptado';
+        this.status_ruta = 'aceptado';
       },
       error => {
         console.log(<any>error);
-        this.status_ruta ='error';
+        this.status_ruta = 'error';
       }
     );
   }
