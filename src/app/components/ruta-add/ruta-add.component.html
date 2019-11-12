@@ -1,21 +1,20 @@
-
-<div class="alert alert-danger" *ngIf="status_car == 'error'">
-  La ruta no se registro correctamente, intentelo de nuevo.
-</div>
-<div class="alert alert-success" *ngIf="status_car == 'aceptado'">
-  La ruta fue registrado correctamente.
-</div>
-
-  <form #rutanew="ngForm" (ngSubmit)="onSubmit(conductornew)" class="col-md-5">
-
-    <p>
+<form #rutanew="ngForm" (ngSubmit)="onSubmit(rutanew)">
+  <div class="modal-body">
+    <div class="alert alert-danger" *ngIf="status_ruta == 'error'">
+      La ruta no se registro correctamente, intentelo de nuevo.
+    </div>
+    <div class="alert alert-success" *ngIf="status_ruta == 'aceptado'">
+      La ruta fue registrado correctamente.
+    </div>
+    <div class="form-group">
       <label for="nombre">Nombre</label>
-        <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="ruta.nombre" required />
-        <span *ngIf="!nombre.valid && nombre.touched">
-          El nombre no es valido
-        </span>
-    </p>
-
+      <input id="nombre" type="text" name="nombre" #nombre="ngModel" [(ngModel)]="ruta.nombre" required class="form-control" />
+      <span *ngIf="!nombre.valid && nombre.touched">
+        El nombre no es valido
+      </span>
+    </div>
+  </div>
+  <div class="modal-footer">
     <input type="submit" value="Guardar" class="btn btn-success">
-
-  </form>
+  </div>
+</form>

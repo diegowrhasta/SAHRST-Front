@@ -29,6 +29,7 @@ import { PuntoRutaAddComponent } from './components/punto-ruta-add/punto-ruta-ad
 import {NgbActiveModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ModalAboutComponent } from './modal-about/modal-about.component';
 import { ModalComponent } from './modal/modal.component';
+import { ModalEditComponent } from './modal-edit/modal-edit.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { ModalComponent } from './modal/modal.component';
     PuntoRutaComponent,
     PuntoRutaAddComponent,
     ModalAboutComponent,
-    ModalComponent
+    ModalComponent,
+    ModalEditComponent
   ],
   imports: [
     BrowserModule,

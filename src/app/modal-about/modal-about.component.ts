@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalAboutComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private tipo: String
+  ) { }
 
   ngOnInit() {
   }

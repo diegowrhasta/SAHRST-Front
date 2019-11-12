@@ -4,6 +4,7 @@ import { UserService } from '../../services/user.service';
 import { RutaService } from '../../services/ruta.service';
 import { Ruta } from '../../models/ruta';
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {ModalAboutComponent} from '../../modal-about/modal-about.component';
 
 @Component({
   selector: 'app-ruta-add',
@@ -41,9 +42,10 @@ export class RutaAddComponent implements OnInit {
 
     this._rutaService.agregar(this.ruta).subscribe(
       response => {
-        this._router.navigate(['ruta']);
         console.log(response);
         this.status_ruta = 'aceptado';
+        this._activarModal.dismiss('Success');
+        window.location.reload();
       },
       error => {
         console.log(<any>error);
@@ -51,5 +53,4 @@ export class RutaAddComponent implements OnInit {
       }
     );
   }
-
 }
