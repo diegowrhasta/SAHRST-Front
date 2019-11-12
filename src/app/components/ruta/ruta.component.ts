@@ -25,7 +25,7 @@ export class RutaComponent implements OnInit {
     private _rutaService: RutaService,
     private modalService: NgbModal
   ) {
-    this.page_title = 'Rutas';
+    this.page_title = 'Listado de Rutas';
   }
 
 
