@@ -1,24 +1,26 @@
-<div class="col-md-12">
-  <h2>{{page_title}}</h2>
-
-<div class="alert alert-danger" *ngIf="status_ruta == 'error'">
-  La ruta no se registro correctamente, intentelo de nuevo.
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">{{page_title}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="_activarModal.dismiss('Cerrar')">
+    <span aria-hidden="true">&times;</span>
+  </button>
 </div>
-<div class="alert alert-success" *ngIf="status_ruta == 'aceptado'">
-  La ruta fue registrada correctamente.
-</div>
-
-  <form #rutanew="ngForm" (ngSubmit)="onSubmit(rutanew)" class="col-md-5" *ngIf="ruta">
-
-    <p>
+<form #rutanew="ngForm" (ngSubmit)="onSubmit(rutanew)" *ngIf="ruta">
+  <div class="modal-body">
+    <div class="alert alert-danger" *ngIf="status_ruta == 'error'">
+      La ruta no se registro correctamente, intentelo de nuevo.
+    </div>
+    <div class="alert alert-success" *ngIf="status_ruta == 'aceptado'">
+      La ruta fue registrada correctamente.
+    </div>
+    <div class="form-group">
       <label for="nombre">Nombre</label>
-        <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="ruta.nombre" required />
-        <span *ngIf="!nombre.valid && nombre.touched">
-          El nombre no es valido
-        </span>
-    </p>
-
+      <input id="nombre" type="text" name="nombre" #nombre="ngModel" [(ngModel)]="ruta.nombre" required class="form-control" />
+      <span *ngIf="!nombre.valid && nombre.touched">
+        El nombre no es valido
+      </span>
+    </div>
+  </div>
+  <div class="modal-footer">
     <input type="submit" value="Actualizar" class="btn btn-success">
-
-  </form>
-</div>
+  </div>
+</form>

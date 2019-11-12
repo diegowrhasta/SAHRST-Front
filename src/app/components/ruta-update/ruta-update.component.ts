@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import {Component, Input, OnInit} from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { Ruta } from '../../models/ruta';
 import { RutaService } from '../../services/ruta.service';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-ruta-update',
@@ -12,49 +13,36 @@ import { RutaService } from '../../services/ruta.service';
 })
 export class RutaUpdateComponent implements OnInit {
 
-  public page_title: string; 
+  public page_title: string;
   public ruta: Ruta;
+  @Input() public data;
+  public status_ruta: string;
 
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
     private _userService: UserService,
-    private _rutaService: RutaService
+    private _rutaService: RutaService,
+    private _activarModal: NgbActiveModal
   ) { }
 
   ngOnInit() {
-    this._route.params.subscribe(params => {
-      let id = +params['id'];
-      this.getRuta(id);
-    });
+    this.ruta = this.data;
+    this.page_title = 'Editar Ruta';
+    console.log(this.data);
   }
 
-  getRuta(id){
-
-    this._rutaService.getRuta(id).subscribe(
-      response => {
-        //if( response.status == 'success' ){
-          this.ruta = response;
-          this.page_title = 'Editar ' + this.ruta.nombre;//titulo guardar (funciona con el error)
-        //}
-        console.log(response);
-      },
-      error => {
-        console.log(error);
-      }
-    );
-  }
-
-  onSubmit(form){
-    //Servicio
+  onSubmit(form) {
+    // Servicio
     console.log(this.ruta.ruta_id);
-    this._rutaService.update(this.ruta,this.ruta.ruta_id).subscribe(
+    this._rutaService.update(this.ruta, this.ruta.ruta_id).subscribe(
       response => {
-        alert("Actualización exitosa");
+        this.status_ruta = 'aceptado';
         console.log(response);
+        this._activarModal.dismiss('Success');
       },
       error => {
-        alert("No se actualizó, por favor corrija los datos ingresados");
+        this.status_ruta = 'error';
         console.log(<any>error);
       }
     );

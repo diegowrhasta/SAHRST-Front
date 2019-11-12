@@ -3,8 +3,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { RutaService } from '../../services/ruta.service';
 import { Ruta } from '../../models/ruta';
-import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import {ModalAboutComponent} from '../../modal-about/modal-about.component';
+import { NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-ruta-add',

@@ -3,10 +3,9 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { RutaService } from '../../services/ruta.service';
 import { Ruta } from '../../models/ruta';
-import {ModalAboutComponent} from '../../modal-about/modal-about.component';
 import {NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import {RutaUpdateComponent} from '../ruta-update/ruta-update.component';
 import {RutaAddComponent} from '../ruta-add/ruta-add.component';
-import {AuthService} from '../../auth/services/auth.service';
 
 @Component({
   selector: 'app-ruta',
@@ -59,8 +58,13 @@ export class RutaComponent implements OnInit {
   refresh(): void {
     window.location.reload();
   }
-  open() {
-    const modalRef = this.modalService.open(ModalAboutComponent);
-    modalRef.componentInstance.title = 'About';
+  openAdd() {
+    const modalRef = this.modalService.open(RutaAddComponent);
+    modalRef.componentInstance.title = 'Nueva Ruta';
+  }
+
+  openEdit(ruta: Ruta) {
+    const modalRef = this.modalService.open(RutaUpdateComponent);
+    modalRef.componentInstance.data = ruta;
   }
 }

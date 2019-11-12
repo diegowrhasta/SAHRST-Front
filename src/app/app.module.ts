@@ -27,9 +27,6 @@ import { PuntoDetalleComponent } from './components/punto-detalle/punto-detalle.
 import { PuntoRutaComponent } from './components/punto-ruta/punto-ruta.component';
 import { PuntoRutaAddComponent } from './components/punto-ruta-add/punto-ruta-add.component';
 import {NgbActiveModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { ModalAboutComponent } from './modal-about/modal-about.component';
-import { ModalComponent } from './modal/modal.component';
-import { ModalEditComponent } from './modal-edit/modal-edit.component';
 
 @NgModule({
   declarations: [
@@ -53,10 +50,7 @@ import { ModalEditComponent } from './modal-edit/modal-edit.component';
     PuntoUpdateComponent,
     PuntoDetalleComponent,
     PuntoRutaComponent,
-    PuntoRutaAddComponent,
-    ModalAboutComponent,
-    ModalComponent,
-    ModalEditComponent
+    PuntoRutaAddComponent
   ],
   imports: [
     BrowserModule,
@@ -70,9 +64,6 @@ import { ModalEditComponent } from './modal-edit/modal-edit.component';
   providers: [
     NgbActiveModal
   ],
-  bootstrap: [AppComponent],
-  entryComponents: [
-    ModalAboutComponent
-  ]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
