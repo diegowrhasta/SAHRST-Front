@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, DoCheck, OnInit} from '@angular/core';
 import { AuthService} from './auth/services/auth.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { AuthService} from './auth/services/auth.service';
   styleUrls: ['./app.component.css'],
   providers: [AuthService]
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, DoCheck {
   public identity;
   public token;
 
@@ -31,4 +31,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  ngDoCheck(): void {
+    this.identity = this._AuthService.getIdentity();
+    this.token = this._AuthService.getToken();
+  }
+
 }
