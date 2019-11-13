@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { ConductorService } from '../../services/conductor.service';
 import { Conductor } from '../../models/conductor';
-
-import { RutaService } from "../../services/ruta.service";
-import { Ruta } from "../../models/ruta";
-import { Punto } from "../../models/punto";
+import { RutaService } from '../../services/ruta.service';
+import { Ruta } from '../../models/ruta';
 import { PuntoService } from '../../services/punto.service';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {ConductorDetalleComponent} from '../conductor-detalle/conductor-detalle.component';
 
 @Component({
   selector: 'app-conductor',
@@ -18,7 +18,6 @@ import { PuntoService } from '../../services/punto.service';
 export class ConductorComponent implements OnInit {
   public page_title: string;
   public conductores: Array<Conductor>;
-  public puntos: Array<Punto>;
   public rutas: Array<Ruta>;
 
   constructor(
@@ -27,7 +26,8 @@ export class ConductorComponent implements OnInit {
     private _userService: UserService,
     private _puntoService: PuntoService,
     private _conductorService: ConductorService,
-    private _rutaService: RutaService
+    private _rutaService: RutaService,
+    private modalService: NgbModal
   ) {
     this.page_title = 'Listado de Conductores';
   }
@@ -68,10 +68,14 @@ export class ConductorComponent implements OnInit {
     );
   }
 
-  refresh(): void {
+  refresh() {
     window.location.reload();
   }
-  new(): void {
+  new() {
     this._router.navigate(['conductor-add']);
+  }
+  conductorDetalle(id: number) {
+    const modalRef = this.modalService.open(ConductorDetalleComponent, {centered: true});
+    modalRef.componentInstance.id = id;
   }
 }

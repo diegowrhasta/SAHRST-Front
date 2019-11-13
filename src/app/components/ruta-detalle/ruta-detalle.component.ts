@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { Ruta } from '../../models/ruta';
 import { RutaService } from '../../services/ruta.service';
+import {Punto} from '../../models/punto';
 
 @Component({
   selector: 'app-ruta-detalle',
@@ -13,6 +14,7 @@ import { RutaService } from '../../services/ruta.service';
 export class RutaDetalleComponent implements OnInit {
 
   public ruta: Ruta;
+  public puntos: Punto;
 
   constructor(
     private _route: ActivatedRoute,
@@ -24,16 +26,17 @@ export class RutaDetalleComponent implements OnInit {
   ngOnInit() {
     this.getRuta();
   }
-
-  getRuta(){
+  getPuntos(id: number) {
     this._route.params.subscribe(params => {
-      let id = +params['id'];
 
+    });
+  }
+  getRuta() {
+    this._route.params.subscribe(params => {
+      const id = +params['id'];
       this._rutaService.getRuta(id).subscribe(
         response => {
-          //if( response.status == 'success' ){
             this.ruta = response;
-          //}
           console.log(response);
         },
         error => {

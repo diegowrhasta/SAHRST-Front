@@ -20,7 +20,7 @@ export class PuntoRutaComponent implements OnInit {
   public puntos: Array<Punto>;
   public rutas: Array<Ruta>;
   public puntorutas: Array<PuntoRuta>;
-  
+
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
@@ -28,7 +28,7 @@ export class PuntoRutaComponent implements OnInit {
     private _puntoService: PuntoService,
     private _rutaService: RutaService,
     private _puntoRutaService: PuntoRutaService
-  ) { 
+  ) {
     this.page_title = 'Puntos - Rutas';
 
   }
@@ -37,21 +37,17 @@ export class PuntoRutaComponent implements OnInit {
     console.log('Puntos-Rutas cargados correctamente');
     this._puntoService.getPuntos().subscribe(
       response => {
-        //if( response.status == 'success' ){
           this.puntos = response;
-        //}
         console.log(response);
       },
       error => {
-        //console.log(error);
+        console.log(error);
         this._router.navigate(['login']).then();
       }
     );
     this._rutaService.getRutas().subscribe(
       response => {
-        //if( response.status == 'success' ){
           this.rutas = response;
-        //}
         console.log(response);
       },
       error => {
@@ -60,9 +56,7 @@ export class PuntoRutaComponent implements OnInit {
     );
     this._puntoRutaService.getPuntoRutas().subscribe(
       response => {
-        //if( response.status == 'success' ){
           this.puntorutas = response;
-        //}
         console.log(response);
       },
       error => {
@@ -71,12 +65,12 @@ export class PuntoRutaComponent implements OnInit {
     );
   }
 
-  deletePuntoRuta(id){
+  deletePuntoRuta(id) {
     this._puntoRutaService.deletePuntoRuta(id).subscribe(
       response => {
         this._router.navigate['punto-ruta'];
         location.reload();
-        alert("Punto ruta eliminado correctamente");
+        alert('Punto ruta eliminado correctamente');
       },
       error => {
         console.log(<any>error);

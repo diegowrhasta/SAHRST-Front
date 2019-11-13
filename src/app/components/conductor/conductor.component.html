@@ -38,7 +38,7 @@
                     <img src="http://157.245.175.97/uploads/avatars/{{conductor.avatar}}" width=50 height=50>
                   </td>
                   <td>
-                    <a [routerLink]="['/conductor',conductor.conductor_id]"><strong>{{conductor.nombres}} {{conductor.ap_paterno}} {{conductor.ap_materno}}</strong></a>
+                    <a [routerLink]="" (click)="conductorDetalle(conductor.conductor_id)"><strong>{{conductor.nombres}} {{conductor.ap_paterno}} {{conductor.ap_materno}}</strong></a>
                   </td>
                   <td>
                     {{conductor.ci}}
