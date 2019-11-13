@@ -19,7 +19,7 @@ export class TipoPuntoComponent implements OnInit {
     private _router: Router,
     private _userService: UserService,
     private _tipoPuntoService: TipoPuntoService
-  ) { 
+  ) {
     this.page_title = 'Tipo de Puntos';
   }
 
@@ -27,24 +27,22 @@ export class TipoPuntoComponent implements OnInit {
     console.log('Tipo de puntos cargado correctamente');
     this._tipoPuntoService.getTipoPuntos().subscribe(
       response => {
-        //if( response.status == 'success' ){
           this.tipopuntos = response;
-        //}
         console.log(response);
       },
       error => {
-        //console.log(error);
+        console.log(error);
         this._router.navigate(['login']).then();
       }
     );
   }
 
-  deleteTipoPunto(id){
+  deleteTipoPunto(id) {
     this._tipoPuntoService.deleteTipoPunto(id).subscribe(
       response => {
         this._router.navigate['tipopunto'];
         location.reload();
-        alert("Tipo de punto eliminado correctamente");
+        alert('Tipo de punto eliminado correctamente');
       },
       error => {
         console.log(<any>error);
