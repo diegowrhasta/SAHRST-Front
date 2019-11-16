@@ -1,55 +1,36 @@
-<div *ngIf="conductor" align="center">
+<div *ngIf="conductor">
 
   <div class="card border-info">
-    <img src="http://157.245.175.97/uploads/avatars/{{conductor.avatar}}" class="card-img-top" alt="..." style="margin: 5%">
+    <div class="card-header" style="text-align:center">Datos de Conductor</div>
+    <img src="http://157.245.175.97/uploads/avatars/{{conductor.avatar}}" class="card-img-top" alt="..." style="margin-left: 25%">
+    <div class="card-body" style="text-align:center">
+      <h5 class="card-title">{{conductor.nombres}} {{conductor.ap_paterno}} {{conductor.ap_materno}}</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <strong>Carnet de Identitad:</strong>
+        {{conductor.ci}}
+      </li>
+      <li class="list-group-item">
+        <strong>Fecha de Nacimiento:</strong>
+        {{conductor.fecha_nacimiento}}
+      </li>
+      <li class="list-group-item">
+        <strong>Dirección:</strong>
+        {{conductor.direccion}}
+      </li>
+    </ul>
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      <div class="row">
+        <div class="col-6">
+          <strong>Celular:</strong>
+          {{conductor.celular}}
+        </div>
+        <div class="col-6">
+          <strong>Teléfono:</strong>
+          {{conductor.telefono}}
+        </div>
+      </div>
+    </div>
   </div>
-
-  <!--<h1>{{conductor.conductor_id}}</h1>-->
-<!--  <p><strong>INFORMACIÓN DEL CONDUCTOR:</strong></p>-->
-
-<!--  <p>-->
-<!--    <img src="http://157.245.175.97/uploads/avatars/{{conductor.avatar}}" width=150 height=150>-->
-<!--  </p>-->
-
-<!--  <p>-->
-<!--      <label >Nombres: </label>-->
-<!--      {{conductor.nombres}}-->
-<!--  </p>-->
-<!--  <p>-->
-<!--    <label>Apellido paterno: </label>-->
-<!--      {{conductor.ap_paterno}}-->
-<!--  </p>-->
-<!--  <p>-->
-<!--    <label>Apellido materno: </label>-->
-<!--      {{conductor.ap_materno}}-->
-<!--  </p>-->
-<!--  <p>-->
-<!--    <label>Fecha de nacimiento: </label>-->
-<!--      {{conductor.fecha_nacimiento}}-->
-<!--  </p>-->
-<!--  <p>-->
-<!--    <label>Carnet de Identidad: </label>-->
-<!--      {{conductor.ci}}-->
-<!--  </p>-->
-<!--  <p>-->
-<!--    <label>Dirección: </label>-->
-<!--      {{conductor.direccion}}-->
-<!--  </p>-->
-<!--  <p>-->
-<!--    <label>Celular: </label>-->
-<!--      {{conductor.celular}}-->
-<!--  </p>-->
-<!--  <p>-->
-<!--    <label>Teléfono: </label>-->
-<!--      {{conductor.telefono}}-->
-<!--  </p>-->
-
-  </div></div>
+</div>
