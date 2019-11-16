@@ -1,4 +1,4 @@
-export class Conductor{
+export class Conductor {
     constructor(
         public conductor_id: number,
         public nombres: string,
@@ -12,5 +12,5 @@ export class Conductor{
         public ruta_id: number,
         public avatar: string,
         public next_punto_control: number
-    ){}
+    ) {}
 }
