@@ -32,6 +32,11 @@ export class RutaService {
     return this._http.get(this.url + 'Ruta/' + id, {headers: headers});
   }
 
+  getPuntosRuta(id): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token')).set('Content-Type', 'application/json');
+    return this._http.get(this.url + 'Ruta/' + id + '/getPuntos', {headers: headers});
+  }
+
   update(conductor, id): Observable<any> {
     const json = JSON.stringify(conductor);
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token')).set('Content-Type', 'application/json');

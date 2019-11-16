@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { Ruta } from '../../models/ruta';
 import { RutaService } from '../../services/ruta.service';
-import {Punto} from '../../models/punto';
+import {DetalleRuta} from '../../models/detalle-ruta';
 
 @Component({
   selector: 'app-ruta-detalle',
@@ -14,7 +14,7 @@ import {Punto} from '../../models/punto';
 export class RutaDetalleComponent implements OnInit {
 
   public ruta: Ruta;
-  public puntos: Punto;
+  public puntos: Array<DetalleRuta>;
 
   constructor(
     private _route: ActivatedRoute,
@@ -24,20 +24,28 @@ export class RutaDetalleComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getPuntosRuta();
     this.getRuta();
-  }
-  getPuntos(id: number) {
-    this._route.params.subscribe(params => {
-
-    });
   }
   getRuta() {
     this._route.params.subscribe(params => {
       const id = +params['id'];
       this._rutaService.getRuta(id).subscribe(
         response => {
-            this.ruta = response;
-          console.log(response);
+          this.ruta = response;
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    });
+  }
+  getPuntosRuta() {
+    this._route.params.subscribe(params => {
+      const id = +params['id'];
+      this._rutaService.getPuntosRuta(id).subscribe(
+        response => {
+            this.puntos = response;
         },
         error => {
           console.log(error);
@@ -46,4 +54,11 @@ export class RutaDetalleComponent implements OnInit {
     });
   }
 
+  deletePuntoRuta(punto_id: number) {
+    console.log('eliminado: ' + punto_id);
+  }
+
+  refresh() {
+    window.location.reload();
+  }
 }

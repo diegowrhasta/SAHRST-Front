@@ -1,9 +1,45 @@
-<div class="col-md-12" *ngIf="ruta">
-
-  <h1>{{ruta.ruta_id}}</h1>
-  <p><strong>Ruta</strong></p>
-  <p>
-      {{ruta.nombre}}
-  </p>
-
+<div *ngIf="!puntos && !ruta">
+  <div class="d-flex justify-content-center" style="position:fixed;top:50%;left:50%">
+    <div class="spinner-border text-info" role="status">
+      <span class="sr-only">Cargando Detalles...</span>
+    </div>
+  </div>
+</div>
+<div class="content">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="box box-primary" *ngIf="puntos && ruta">
+      <div class="box-header with-border">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h3 class="box-title"><strong>Ruta: </strong>{{ruta.nombre}}</h3>
+            <div class="box-tools pull-right">
+              <button (click)="refresh()" class="btn btn-primary"> Refrescar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="box-body">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="table-responsive">
+              <table class="table table-bordered table-striped table-hover" id="detalle-ruta-list">
+                <tr>
+                  <th>Punto</th>
+                  <th>Tipo de Punto</th>
+                  <th colspan="2">Opciones</th>
+                </tr>
+                <tr *ngFor="let punto of puntos">
+                  <td>{{punto.nombre_punto}}</td>
+                  <td>{{punto.tipo_punto}}</td>
+                  <td>
+                    <a (click)="deletePuntoRuta(punto.punto_id)" class="btn btn-danger">Borrar</a>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
