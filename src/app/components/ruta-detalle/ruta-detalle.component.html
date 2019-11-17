@@ -13,7 +13,8 @@
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <h3 class="box-title"><strong>Ruta: </strong>{{ruta.nombre}}</h3>
             <div class="box-tools pull-right">
-              <button (click)="refresh()" class="btn btn-primary"> Refrescar</button>
+              <button (click)="refresh()" class="btn btn-primary">Refrescar</button>
+              <button class="btn btn-success">Añadir punto</button>
             </div>
           </div>
         </div>
@@ -30,9 +31,12 @@
                 </tr>
                 <tr *ngFor="let punto of puntos">
                   <td>{{punto.nombre_punto}}</td>
-                  <td>{{punto.tipo_punto}}</td>
+                  <td *ngIf="punto.tipo_punto === 'Inicio'" class="text-success"><strong>{{punto.tipo_punto}}</strong></td>
+                  <td *ngIf="punto.tipo_punto === 'Control'">{{punto.tipo_punto}}</td>
+                  <td *ngIf="punto.tipo_punto === 'Fin'" class="text-danger"><strong>{{punto.tipo_punto}}</strong></td>
                   <td>
-                    <a (click)="deletePuntoRuta(punto.punto_id)" class="btn btn-danger">Borrar</a>
+                    <button *ngIf="punto.tipo_punto === 'Inicio' || punto.tipo_punto === 'Fin'" class="btn btn-danger" disabled>Borrar</button>
+                    <button *ngIf="punto.tipo_punto == 'Control'" class="btn btn-danger" (click)="deletePuntoRuta(punto.punto_ruta_id)">Borrar</button>
                   </td>
                 </tr>
               </table>

@@ -15,6 +15,7 @@ export class RutaDetalleComponent implements OnInit {
 
   public ruta: Ruta;
   public puntos: Array<DetalleRuta>;
+  public eliminado: string;
 
   constructor(
     private _route: ActivatedRoute,
@@ -55,7 +56,18 @@ export class RutaDetalleComponent implements OnInit {
   }
 
   deletePuntoRuta(punto_id: number) {
-    console.log('eliminado: ' + punto_id);
+    this._route.params.subscribe(params => {
+      this._rutaService.deletePuntoRuta(punto_id).subscribe(
+        response => {
+          this.eliminado = 'eliminado';
+          window.location.reload();
+        },
+        error => {
+          console.log(error);
+          this.eliminado = 'error';
+        }
+      );
+    });
   }
 
   refresh() {

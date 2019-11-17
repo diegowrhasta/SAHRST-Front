@@ -47,4 +47,9 @@ export class RutaService {
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token')).set('Content-Type', 'application/json');
     return this._http.delete(this.url + 'Ruta/' + id, {headers: headers});
   }
+
+  deletePuntoRuta(id) {
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token')).set('Content-Type', 'application/json');
+    return this._http.delete(this.url + 'Punto_Ruta/' + id, {headers: headers});
+  }
 }
