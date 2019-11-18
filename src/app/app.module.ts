@@ -27,6 +27,7 @@ import { PuntoDetalleComponent } from './components/punto-detalle/punto-detalle.
 import { PuntoRutaComponent } from './components/punto-ruta/punto-ruta.component';
 import { PuntoRutaAddComponent } from './components/punto-ruta-add/punto-ruta-add.component';
 import {NgbActiveModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { FiltroPipe } from './filtro.pipe';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import {NgbActiveModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';
     PuntoUpdateComponent,
     PuntoDetalleComponent,
     PuntoRutaComponent,
-    PuntoRutaAddComponent
+    PuntoRutaAddComponent,
+    FiltroPipe
   ],
   imports: [
     BrowserModule,
