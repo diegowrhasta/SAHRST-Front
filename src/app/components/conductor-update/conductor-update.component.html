@@ -11,6 +11,22 @@
       <form #conductornew="ngForm" (ngSubmit)="onSubmit(conductornew)" *ngIf="conductor">
         <div class="box-body">
           <div class="row">
+            <div class="col-lg-8 col-sm-8 col-md-8x col-xs-12">
+              <div style="display: flex; justify-content: center" class="btn-group">
+                <a [routerLink]="" class="dropdown-toogle" data-toggle="dropdown">
+                  <img src="http://157.245.175.97/uploads/avatars/{{conductor.avatar}}" alt="{{conductor.avatar}}" class="img-thumbnail" >
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item">Ver foto</a>
+                    <a class="dropdown-item">Cambiar Foto</a>
+                  </li>
+                </ul>
+
+              </div>
+            </div>
+          </div>
+          <div class="row">
             <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
               <div class="form-group">
                 <label for="nombres">Nombres</label>

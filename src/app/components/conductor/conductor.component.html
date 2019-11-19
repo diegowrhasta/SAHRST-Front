@@ -42,7 +42,7 @@
                 </tr>
                 <tr *ngFor="let conductor of conductores | filtro:query">
                   <td>
-                    <img src="http://157.245.175.97/uploads/avatars/{{conductor.avatar}}" width=50 height=50>
+                    <img src="http://157.245.175.97/uploads/avatars/{{conductor.avatar}}" width=50 height=50 alt="{{conductor.avatar}}">
                   </td>
                   <td>
                     <a [routerLink]="" (click)="conductorDetalle(conductor.conductor_id)"><strong>{{conductor.nombres}} {{conductor.ap_paterno}} {{conductor.ap_materno}}</strong></a>

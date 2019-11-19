@@ -6,10 +6,10 @@ import {Conductor} from './models/conductor';
 })
 export class FiltroPipe implements PipeTransform {
 
-  transform(value: Array<Conductor>, input: string): any {
+  transform(value: Array<Conductor>, input: string): Array<Conductor> {
     if (input) {
       input = input.toLowerCase();
-      return value.filter(function (el: any) {
+      return value.filter(function (el: Conductor) {
         return el.nombres.toLowerCase().includes(input) || el.ap_materno.toLowerCase().includes(input) || el.ap_paterno.toLowerCase().includes(input);
       });
     }

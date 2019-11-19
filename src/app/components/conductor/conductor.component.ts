@@ -18,7 +18,6 @@ import {ConductorDetalleComponent} from '../conductor-detalle/conductor-detalle.
 export class ConductorComponent implements OnInit {
   public page_title: string;
   public conductores: Array<Conductor>;
-  public conductoresFiltrados: Array<Conductor>;
   public rutas: Array<Ruta>;
   query: String;
 
@@ -39,12 +38,6 @@ export class ConductorComponent implements OnInit {
     this._conductorService.getConductores().subscribe(
       response => {
           this.conductores = response;
-          this.conductoresFiltrados = response;
-          if (this.conductoresFiltrados === undefined) {
-            console.log('Vacio');
-          } else {
-            console.log(this.conductoresFiltrados);
-          }
         console.log(response);
       },
       error => {
