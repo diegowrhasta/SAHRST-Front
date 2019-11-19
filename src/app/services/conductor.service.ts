@@ -8,7 +8,7 @@ import { Conductor } from '../models/conductor';
 export class ConductorService {
   public url: string;
   constructor(
-    public _http: HttpClient
+    private _http: HttpClient
     ) {
     this.url = GLOBAL.url;
   }
@@ -44,4 +44,8 @@ export class ConductorService {
     return this._http.delete(this.url + 'Conductor/' + id, {headers: headers});
   }
 
+  uploadImage(uploadData: FormData, conductor_id: number): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+    return this._http.post(this.url  + 'Conductor/' + conductor_id + '/profile_pic', uploadData, {headers: headers});
+  }
 }

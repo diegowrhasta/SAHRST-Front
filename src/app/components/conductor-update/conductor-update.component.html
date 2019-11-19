@@ -18,11 +18,14 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a class="dropdown-item">Ver foto</a>
-                    <a class="dropdown-item">Cambiar Foto</a>
+                    <a class="dropdown-item" href="http://157.245.175.97/uploads/avatars/{{conductor.avatar}}" target="_blank">Ver foto</a>
+                    <input
+                      style="display: none"
+                      type="file" (change)="onFileChanged($event)"
+                      #fileInput>
+                    <a class="dropdown-item" (click)="fileInput.click()">Cambiar Foto</a>
                   </li>
                 </ul>
-
               </div>
             </div>
           </div>

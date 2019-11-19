@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { ConductorService } from '../../services/conductor.service';
 import { Conductor } from '../../models/conductor';
@@ -17,6 +17,7 @@ export class ConductorUpdateComponent implements OnInit {
   public page_title: string;
   public conductor: Conductor;
   public rutas: Array<Ruta>;
+  selectedFile: File;
 
   constructor(
     private _route: ActivatedRoute,
@@ -46,7 +47,6 @@ export class ConductorUpdateComponent implements OnInit {
     );
   }
 
-
   getConductor(id) {
 
       this._conductorService.getConductor(id).subscribe(
@@ -72,6 +72,24 @@ export class ConductorUpdateComponent implements OnInit {
       error => {
         alert('No se actualizó, por favor corrija los datos ingresados');
         console.log(<any>error);
+      }
+    );
+  }
+
+  onFileChanged(event) {
+    this.selectedFile = event.target.files[0];
+    this.onUpload();
+  }
+
+  onUpload() {
+    const uploadData = new FormData();
+    uploadData.append('avatar', this.selectedFile);
+    this._conductorService.uploadImage(uploadData, this.conductor.conductor_id).subscribe(
+      response => {
+        window.location.reload();
+      },
+      error => {
+        console.log('error', error);
       }
     );
   }
