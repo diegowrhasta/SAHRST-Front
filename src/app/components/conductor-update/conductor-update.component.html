@@ -97,15 +97,30 @@
             <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
               <div class="form-group">
                 <label for="ruta_id">Ruta</label>
-                <select class="form-control" id="ruta_id" name="ruta_id" #ruta_id="ngModel" [(ngModel)]="conductor.ruta_id">
+                <select class="form-control" id="ruta_id" name="ruta_id" #ruta_id="ngModel" [(ngModel)]="conductor.ruta_id" disabled>
                   <option *ngFor="let ruta of rutas" [value]="ruta.ruta_id">{{ruta.ruta_id}}. {{ruta.nombre}}</option>
                 </select>
+              </div>
+            </div>
+          </div>
+          <div class="row" *ngFor="let auto of autosConductor">
+            <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+              <div class="card">
+                <div class="card-header">
+                  <strong>Placa: {{auto.placa}}</strong>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><strong>Modelo: </strong>{{auto.modelo}}</li>
+                  <li class="list-group-item"><strong>Marca: </strong>{{auto.marca}}</li>
+                  <li class="list-group-item"><strong>Color: </strong>{{auto.color}}</li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
         <div class="box-footer">
           <input type="submit" value="Guardar" class="btn btn-success">
+          <a (click)="back()"><button class="btn btn-primary">Agregar Auto</button></a>
           <a (click)="back()"><button class="btn btn-warning">Cancelar</button></a>
         </div>
       </form>

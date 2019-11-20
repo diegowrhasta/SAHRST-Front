@@ -6,6 +6,7 @@ import { Conductor } from '../../models/conductor';
 
 import { RutaService } from '../../services/ruta.service';
 import { Ruta } from '../../models/ruta';
+import {Vehiculo} from '../../models/vehiculo';
 
 @Component({
   selector: 'app-conductor-update',
@@ -17,6 +18,7 @@ export class ConductorUpdateComponent implements OnInit {
   public page_title: string;
   public conductor: Conductor;
   public rutas: Array<Ruta>;
+  public autosConductor: Array<Vehiculo>;
   selectedFile: File;
 
   constructor(
@@ -32,7 +34,6 @@ export class ConductorUpdateComponent implements OnInit {
       const id = +params['id'];
       this.getConductor(id);
     });
-
     this._rutaService.getRutas().subscribe(
       response => {
         // if( response.status == 'success' ){
@@ -45,14 +46,15 @@ export class ConductorUpdateComponent implements OnInit {
         this._router.navigate(['login']).then();
       }
     );
+
   }
 
   getConductor(id) {
-
       this._conductorService.getConductor(id).subscribe(
         response => {
-            this.conductor = response;
-            this.page_title = 'Editar información de Conductor: ' + this.conductor.nombres; // titulo guardar (funciona con el error)
+          this.conductor = response;
+          this.getAutos();
+          this.page_title = 'Editar información de Conductor: ' + this.conductor.nombres; // titulo guardar (funciona con el error)
           console.log(response);
         },
         error => {
@@ -90,6 +92,20 @@ export class ConductorUpdateComponent implements OnInit {
       },
       error => {
         console.log('error', error);
+      }
+    );
+  }
+
+  getAutos() {
+    console.log(this.conductor.conductor_id);
+    this._conductorService.getAutosConductor(this.conductor.conductor_id).subscribe(
+      response => {
+        this.autosConductor = response;
+        console.log(this.autosConductor);
+      },
+      error => {
+        console.log(error);
+        this._router.navigate(['login']).then();
       }
     );
   }
