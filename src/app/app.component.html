@@ -7,10 +7,10 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="identity">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['conductor']" (click)="clickedLink($event)">Conductores<span class="sr-only">(current)</span></a>
+        <a class="nav-link" [routerLink]="['conductor']" routerLinkActive="active">Conductores<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['ruta']" (click)="clickedLink($event)">Rutas</a>
+        <a class="nav-link" [routerLink]="['ruta']" routerLinkActive="active">Rutas</a>
       </li>
 
     </ul>

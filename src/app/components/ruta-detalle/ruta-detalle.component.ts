@@ -25,8 +25,8 @@ export class RutaDetalleComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getPuntosRuta();
     this.getRuta();
+    this.getPuntosRuta();
   }
   getRuta() {
     this._route.params.subscribe(params => {
@@ -56,9 +56,9 @@ export class RutaDetalleComponent implements OnInit {
   }
 
   deletePuntoRuta(punto_id: number) {
-    this._route.params.subscribe(params => {
+    this._route.params.subscribe(() => {
       this._rutaService.deletePuntoRuta(punto_id).subscribe(
-        response => {
+        () => {
           this.eliminado = 'eliminado';
           window.location.reload();
         },
@@ -69,6 +69,7 @@ export class RutaDetalleComponent implements OnInit {
       );
     });
   }
+
 
   refresh() {
     window.location.reload();
