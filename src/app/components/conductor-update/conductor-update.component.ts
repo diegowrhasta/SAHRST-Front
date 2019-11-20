@@ -3,10 +3,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { ConductorService } from '../../services/conductor.service';
 import { Conductor } from '../../models/conductor';
-
 import { RutaService } from '../../services/ruta.service';
 import { Ruta } from '../../models/ruta';
 import {Vehiculo} from '../../models/vehiculo';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {VehiculoAddComponent} from '../vehiculo-add/vehiculo-add.component';
 
 @Component({
   selector: 'app-conductor-update',
@@ -26,7 +27,8 @@ export class ConductorUpdateComponent implements OnInit {
     private _router: Router,
     private _userService: UserService,
     private _conductorService: ConductorService,
-    private _rutaService: RutaService
+    private _rutaService: RutaService,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit() {
@@ -67,9 +69,9 @@ export class ConductorUpdateComponent implements OnInit {
     // Servicio
     console.log(this.conductor.conductor_id);
     this._conductorService.update(this.conductor, this.conductor.conductor_id).subscribe(
-      response => {
+      () => {
         alert('Actualización exitosa');
-        this._router.navigate(['conductor']);
+        this._router.navigate(['conductor']).then();
       },
       error => {
         alert('No se actualizó, por favor corrija los datos ingresados');
@@ -87,7 +89,7 @@ export class ConductorUpdateComponent implements OnInit {
     const uploadData = new FormData();
     uploadData.append('avatar', this.selectedFile);
     this._conductorService.uploadImage(uploadData, this.conductor.conductor_id).subscribe(
-      response => {
+      () => {
         window.location.reload();
       },
       error => {
@@ -111,6 +113,11 @@ export class ConductorUpdateComponent implements OnInit {
   }
 
   back() {
-    this._router.navigate(['conductor']);
+    this._router.navigate(['conductor']).then();
+  }
+
+  openNewCar(id: number) {
+    const modalRef = this.modalService.open(VehiculoAddComponent);
+    modalRef.componentInstance.data = id;
   }
 }
