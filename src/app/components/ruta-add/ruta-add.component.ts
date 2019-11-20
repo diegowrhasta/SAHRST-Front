@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { RutaService } from '../../services/ruta.service';
 import { Ruta } from '../../models/ruta';
@@ -19,6 +19,7 @@ export class RutaAddComponent implements OnInit {
   public identity;
   public token;
   public ruta: Ruta;
+  public rutaResponse: Ruta;
   public status_ruta: string;
 
   constructor(
@@ -36,15 +37,12 @@ export class RutaAddComponent implements OnInit {
   }
 
   onSubmit(form) {
-    console.log(this.ruta);
-    console.log(this._rutaService.pruebas());
-
     this._rutaService.agregar(this.ruta).subscribe(
       response => {
-        console.log(response);
+        this.rutaResponse = response;
         this.status_ruta = 'aceptado';
         this._activarModal.dismiss('Success');
-        window.location.reload();
+        this._router.navigate(['ruta/', this.rutaResponse.ruta_id]).then();
       },
       error => {
         console.log(<any>error);

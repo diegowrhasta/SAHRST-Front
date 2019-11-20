@@ -29,12 +29,9 @@ export class RutaUpdateComponent implements OnInit {
   ngOnInit() {
     this.ruta = this.data;
     this.page_title = 'Editar Ruta';
-    console.log(this.data);
   }
 
   onSubmit(form) {
-    // Servicio
-    console.log(this.ruta.ruta_id);
     this._rutaService.update(this.ruta, this.ruta.ruta_id).subscribe(
       response => {
         this.status_ruta = 'aceptado';

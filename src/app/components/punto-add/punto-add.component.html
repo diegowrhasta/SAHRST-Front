@@ -1,35 +1,32 @@
-<div class="col-md-12">
-  <h2>{{page_title}}</h2>
-
-<div class="alert alert-danger" *ngIf="status_car == 'error'">
-  El punto no se registro correctamente, intentelo de nuevo.
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">{{page_title}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="_activarModal.dismiss('Cerrar')">
+    <span aria-hidden="true">&times;</span>
+  </button>
 </div>
-<div class="alert alert-success" *ngIf="status_car == 'aceptado'">
-  El punto fue registrado correctamente.
-</div>
-
-  <form #puntonew="ngForm" (ngSubmit)="onSubmit(puntonew)" class="col-md-5">
-
-    <p>
+<form #puntonew="ngForm" (ngSubmit)="onSubmit(puntonew)">
+  <div class="modal-body">
+    <div class="alert alert-danger" *ngIf="status_car == 'error'">
+      El punto no se registro correctamente, intentelo de nuevo.
+    </div>
+    <div class="alert alert-success" *ngIf="status_car == 'aceptado'">
+      El punto fue registrado correctamente.
+    </div>
+    <div class="col-8 form-group">
       <label for="nombre">Nombre</label>
-        <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="punto.nombre" required />
-        <span *ngIf="!nombre.valid && nombre.touched">
-          El nombre del punto no es valido
-        </span>
-    </p>
-    
-    <p>
-      <label for="tipo_punto_id">Tipo</label>    
-      <select name="tipo_punto_id" #punto_id="ngModel" [(ngModel)]="punto.tipo_punto_id">
-        
-          <option *ngFor="let tipopunto of tipopuntos" [value]="tipopunto.tipo_punto_id">{{tipopunto.tipo_punto_id}} {{tipopunto.nombre}}</option> 
-        
+      <input id="nombre" type="text" name="nombre" #nombre="ngModel" [(ngModel)]="punto.nombre" required class="form-control"/>
+      <span *ngIf="!nombre.valid && nombre.touched">
+        El nombre del punto no es valido
+      </span>
+    </div>
+    <div class="col-6">
+      <label for="tipo_punto_id">Tipo</label>
+      <select class="form-control form-control-sm" id="tipo_punto_id" name="tipo_punto_id" #punto_id="ngModel" [(ngModel)]="punto.tipo_punto_id">
+        <option *ngFor="let tipopunto of tipopuntos" [value]="tipopunto.tipo_punto_id">{{tipopunto.tipo_punto_id}} {{tipopunto.nombre}}</option>
       </select>
-    </p>
-
-    <br><br><br>
-
+    </div>
+  </div>
+  <div class="modal-footer">
     <input type="submit" value="Guardar" class="btn btn-success">
-
-  </form>
-</div>
+  </div>
+</form>

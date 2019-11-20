@@ -4,6 +4,8 @@ import { UserService } from '../../services/user.service';
 import { Ruta } from '../../models/ruta';
 import { RutaService } from '../../services/ruta.service';
 import {DetalleRuta} from '../../models/detalle-ruta';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {PuntoAddComponent} from '../punto-add/punto-add.component';
 
 @Component({
   selector: 'app-ruta-detalle',
@@ -21,7 +23,8 @@ export class RutaDetalleComponent implements OnInit {
     private _route: ActivatedRoute,
     private _router: Router,
     private _userService: UserService,
-    private _rutaService: RutaService
+    private _rutaService: RutaService,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit() {
@@ -73,5 +76,10 @@ export class RutaDetalleComponent implements OnInit {
 
   refresh() {
     window.location.reload();
+  }
+
+  openAddPunto(ruta_id: number) {
+    const modalRef = this.modalService.open(PuntoAddComponent);
+    modalRef.componentInstance.data = ruta_id;
   }
 }
