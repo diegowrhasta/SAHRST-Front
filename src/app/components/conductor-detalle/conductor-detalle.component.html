@@ -32,5 +32,38 @@
         </div>
       </div>
     </div>
+    <div class="card-footer" id="accordion">
+      <div class="col-6">
+        <strong>Vehículos</strong>
+      </div>
+
+      <div class="card" *ngFor="let auto of autosConductor">
+        <div class="card-header" id="head_{{auto.vehiculo_id}}">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed" data-toggle="collapse" [attr.data-target]="'#collapse_' + auto.vehiculo_id" aria-expanded="false" [attr.aria-controls]="'collapse_' + auto.vehiculo_id">
+              {{auto.placa}}
+            </button>
+          </h5>
+        </div>
+        <div id="collapse_{{auto.vehiculo_id}}" class="collapse" [attr.aria-labelledby]="'head_' + auto.vehiculo_id" data-parent="#accordion">
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <strong>Modelo: </strong>
+                {{auto.modelo}}
+              </li>
+              <li class="list-group-item">
+                <strong>Marca: </strong>
+                {{auto.marca}}
+              </li>
+              <li class="list-group-item">
+                <strong>Color: </strong>
+                {{auto.color}}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

@@ -1,8 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { Conductor } from '../../models/conductor';
 import { ConductorService } from '../../services/conductor.service';
+import {Vehiculo} from '../../models/vehiculo';
 
 @Component({
   selector: 'app-conductor-detalle',
@@ -14,6 +15,7 @@ export class ConductorDetalleComponent implements OnInit {
   @Input() public id;
 
   public conductor: Conductor;
+  public autosConductor: Array<Vehiculo>;
 
   constructor(
     private _route: ActivatedRoute,
@@ -24,13 +26,25 @@ export class ConductorDetalleComponent implements OnInit {
 
   ngOnInit() {
     this.getConductor();
+    this.getAutos();
   }
 
   getConductor() {
     this._conductorService.getConductor(this.id).subscribe(
       response => {
         this.conductor = response;
-        console.log(response);
+      },
+      error => {
+        console.log(error);
+        this._router.navigate(['login']).then();
+      }
+    );
+  }
+  getAutos() {
+    this._conductorService.getAutosConductor(this.id).subscribe(
+      response => {
+        this.autosConductor = response;
+        console.log(this.autosConductor);
       },
       error => {
         console.log(error);
