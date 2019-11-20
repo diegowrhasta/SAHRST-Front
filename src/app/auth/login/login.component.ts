@@ -23,6 +23,16 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.authService.userData().subscribe(
+      () => {
+          this.router.navigate(['conductor']).then();
+        },
+      () => {
+        localStorage.removeItem('identity');
+        localStorage.removeItem('access_token');
+        this.authService.nullPublics();
+      }
+    );
     this.f = this.formBuilder.group({
       email: [null, [Validators.required, Validators.email]],
       password: [null, [Validators.required]]
