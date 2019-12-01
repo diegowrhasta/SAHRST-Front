@@ -8,6 +8,12 @@
           </div>
         </div>
       </div>
+      <div class="alert alert-danger" role="alert"  *ngIf="status_edit == 'error'">
+        Error al actualizar datos de conductor, por favor verifique los datos
+      </div>
+      <div class="alert alert-success" role="alert"  *ngIf="status_edit == 'ok'">
+        Datos guardados
+      </div>
       <form #conductornew="ngForm" (ngSubmit)="onSubmit(conductornew)" *ngIf="conductor">
         <div class="box-body">
           <div class="row">
@@ -120,8 +126,8 @@
         </div>
         <div class="box-footer">
           <input type="submit" value="Guardar" class="btn btn-success">
-          <a (click)="openNewCar(conductor.conductor_id)" class="btn btn-primary">Agregar Auto</a>
-          <a (click)="back()"><button class="btn btn-warning">Cancelar</button></a>
+          <a (click)="openNewCar(conductor.conductor_id)" class="btn btn-primary" style="color: #ffffff">Agregar Auto</a>
+          <a (click)="back()"><button class="btn btn-warning" style="color: #ffffff">Volver</button></a>
         </div>
       </form>
     </div>

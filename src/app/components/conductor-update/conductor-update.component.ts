@@ -21,6 +21,7 @@ export class ConductorUpdateComponent implements OnInit {
   public rutas: Array<Ruta>;
   public autosConductor: Array<Vehiculo>;
   selectedFile: File;
+  public status_edit: string;
 
   constructor(
     private _route: ActivatedRoute,
@@ -70,11 +71,10 @@ export class ConductorUpdateComponent implements OnInit {
     console.log(this.conductor.conductor_id);
     this._conductorService.update(this.conductor, this.conductor.conductor_id).subscribe(
       () => {
-        alert('Actualización exitosa');
-        this._router.navigate(['conductor']).then();
+        this.status_edit = 'ok';
       },
       error => {
-        alert('No se actualizó, por favor corrija los datos ingresados');
+        this.status_edit = 'error';
         console.log(<any>error);
       }
     );
