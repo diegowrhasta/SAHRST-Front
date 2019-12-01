@@ -17,13 +17,13 @@
       <div class="alert alert-success" role="alert"  *ngIf="status_edit == 'ok'">
         Datos guardados
       </div>
-      <div class="alert alert-info" *ngIf="carAddedStatus == 'aceptado'">
+      <div class="alert alert-info" role="alert" *ngIf="carAddedStatus == 'aceptado'">
         Vehículo registrado correctamente.
       </div>
       <form #conductornew="ngForm" (ngSubmit)="onSubmit(conductornew)" *ngIf="conductor">
         <div class="box-body">
           <div class="row">
-            <div class="col-lg-8 col-sm-8 col-md-8x col-xs-12">
+            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
               <div style="display: flex; justify-content: center" class="btn-group">
                 <a [routerLink]="" class="dropdown-toogle" data-toggle="dropdown">
                   <img src="http://157.245.175.97/uploads/avatars/{{conductor.avatar}}" alt="{{conductor.avatar}}" class="img-thumbnail" >
@@ -38,6 +38,29 @@
                     <a class="dropdown-item" (click)="fileInput.click()">Cambiar Foto</a>
                   </li>
                 </ul>
+              </div>
+            </div>
+            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+              <div class="card border-info">
+                <div class="card-header text-white bg-info">Vehículos de Conductor</div>
+                <div class="card-body">
+                  <div class="overflow-auto">
+                    <div class="row">
+                      <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12" *ngFor="let auto of autosConductor">
+                        <div class="card">
+                          <div class="card-header">
+                            <strong>Placa: {{auto.placa}}</strong>
+                          </div>
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><strong>Modelo: </strong>{{auto.modelo}}</li>
+                            <li class="list-group-item"><strong>Marca: </strong>{{auto.marca}}</li>
+                            <li class="list-group-item"><strong>Color: </strong>{{auto.color}}</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -112,25 +135,6 @@
                 <select class="form-control" id="ruta_id" name="ruta_id" #ruta_id="ngModel" [(ngModel)]="conductor.ruta_id" disabled>
                   <option *ngFor="let ruta of rutas" [value]="ruta.ruta_id">{{ruta.ruta_id}}. {{ruta.nombre}}</option>
                 </select>
-              </div>
-            </div>
-          </div>
-          <div class="card border-info">
-            <div class="card-header text-white bg-info">Vehículos de Conductor</div>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12" *ngFor="let auto of autosConductor">
-                  <div class="card">
-                    <div class="card-header">
-                      <strong>Placa: {{auto.placa}}</strong>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item"><strong>Modelo: </strong>{{auto.modelo}}</li>
-                      <li class="list-group-item"><strong>Marca: </strong>{{auto.marca}}</li>
-                      <li class="list-group-item"><strong>Color: </strong>{{auto.color}}</li>
-                    </ul>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
