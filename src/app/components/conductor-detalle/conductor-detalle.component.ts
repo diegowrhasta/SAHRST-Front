@@ -4,6 +4,7 @@ import { UserService } from '../../services/user.service';
 import { Conductor } from '../../models/conductor';
 import { ConductorService } from '../../services/conductor.service';
 import {Vehiculo} from '../../models/vehiculo';
+import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-conductor-detalle',
@@ -21,7 +22,8 @@ export class ConductorDetalleComponent implements OnInit {
     private _route: ActivatedRoute,
     private _router: Router,
     private _userService: UserService,
-    private _conductorService: ConductorService
+    private _conductorService: ConductorService,
+    private modalService: NgbActiveModal
   ) { }
 
   ngOnInit() {
