@@ -38,7 +38,7 @@
                   <th>Celular</th>
                   <th>Ruta</th>
                   <th>Siguiente Punto de control</th>
-                  <th colspan="2">Acciones</th>
+                  <th>Acciones</th>
                 </tr>
                 <tr *ngFor="let conductor of conductores | filtro:query">
                   <td>
@@ -64,12 +64,11 @@
                   <td>
                     {{conductor.next_punto_control}}
                   </td>
-
-                  <td align="center">
-                    <a [routerLink]="['/conductor-update',conductor.conductor_id]" class="btn btn-warning">Editar</a>
-                  </td>
-                  <td align="center">
-                    <a (click)="deleteCar(conductor.conductor_id)" class="btn btn-danger">Borrar</a>
+                  <td>
+                    <div class="btn-group" role="group">
+                      <button [routerLink]="['/conductor-update',conductor.conductor_id]" class="btn btn-warning">Editar</button>
+                      <button (click)="deleteCar(conductor.conductor_id)" class="btn btn-danger">Borrar</button>
+                    </div>
                   </td>
                 </tr>
               </table>

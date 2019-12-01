@@ -26,17 +26,17 @@
               <table class="table table-bordered table-striped table-hover" id="rutas-list">
                 <tr>
                   <th style="width: 85%">Nombre</th>
-                  <th colspan="2">Opciones</th>
+                  <th>Opciones</th>
                 </tr>
                 <tr *ngFor="let ruta of rutas">
                   <td>
                     <a [routerLink]="['/ruta',ruta.ruta_id]"><strong>{{ruta.nombre}} </strong><i class="fa fa-edit"></i></a>
                   </td>
                   <td>
-                    <button class="btn btn-warning" (click)="openEdit(ruta)">Editar</button>
-                  </td>
-                  <td>
-                    <a (click)="deleteRuta(ruta.ruta_id)" class="btn btn-danger">Borrar</a>
+                    <div class="btn-group" role="group">
+                      <button class="btn btn-warning" (click)="openEdit(ruta)">Editar</button>
+                      <button class="btn btn-danger" (click)="deleteRuta(ruta.ruta_id)">Borrar</button>
+                    </div>
                   </td>
                 </tr>
               </table>
