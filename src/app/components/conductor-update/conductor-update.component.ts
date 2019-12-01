@@ -36,6 +36,9 @@ export class ConductorUpdateComponent implements OnInit {
   ) {
     this.dataSharingService.alertMessage.subscribe( value => {
       this.carAddedStatus = value;
+      if (this.carAddedStatus === 'aceptado') {
+        this.getAutos();
+      }
     });
   }
 
@@ -47,10 +50,7 @@ export class ConductorUpdateComponent implements OnInit {
     });
     this._rutaService.getRutas().subscribe(
       response => {
-        // if( response.status == 'success' ){
-          this.rutas = response;
-        // }
-        console.log(response);
+        this.rutas = response;
       },
       error => {
         console.log(error);
@@ -107,7 +107,6 @@ export class ConductorUpdateComponent implements OnInit {
   }
 
   getAutos() {
-    console.log(this.conductor.conductor_id);
     this._conductorService.getAutosConductor(this.conductor.conductor_id).subscribe(
       response => {
         this.autosConductor = response;
