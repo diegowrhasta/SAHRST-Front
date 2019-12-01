@@ -8,6 +8,7 @@ import { Ruta } from '../../models/ruta';
 import {Vehiculo} from '../../models/vehiculo';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {VehiculoAddComponent} from '../vehiculo-add/vehiculo-add.component';
+import {DataSharingService} from '../../services/DataSharing.service';
 
 @Component({
   selector: 'app-conductor-update',
@@ -22,6 +23,7 @@ export class ConductorUpdateComponent implements OnInit {
   public autosConductor: Array<Vehiculo>;
   selectedFile: File;
   public status_edit: string;
+  carAddedStatus: string;
 
   constructor(
     private _route: ActivatedRoute,
@@ -29,10 +31,16 @@ export class ConductorUpdateComponent implements OnInit {
     private _userService: UserService,
     private _conductorService: ConductorService,
     private _rutaService: RutaService,
-    private modalService: NgbModal
-  ) { }
+    private modalService: NgbModal,
+    private dataSharingService: DataSharingService
+  ) {
+    this.dataSharingService.alertMessage.subscribe( value => {
+      this.carAddedStatus = value;
+    });
+  }
 
   ngOnInit() {
+    this.dataSharingService.alertMessage.next('');
     this._route.params.subscribe(params => {
       const id = +params['id'];
       this.getConductor(id);

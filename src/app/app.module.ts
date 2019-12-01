@@ -29,6 +29,7 @@ import { PuntoRutaAddComponent } from './components/punto-ruta-add/punto-ruta-ad
 import {NgbActiveModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FiltroPipe } from './filtro.pipe';
 import { VehiculoAddComponent } from './components/vehiculo-add/vehiculo-add.component';
+import {DataSharingService} from './services/DataSharing.service';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { VehiculoAddComponent } from './components/vehiculo-add/vehiculo-add.com
     NgbModule.forRoot()
   ],
   providers: [
-    NgbActiveModal
+    NgbActiveModal,
+    DataSharingService
   ],
   bootstrap: [AppComponent],
   entryComponents: [VehiculoAddComponent]

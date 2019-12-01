@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {ConductorService} from '../../services/conductor.service';
 import {VehiculoConductor} from '../../models/vehiculo-conductor';
+import {DataSharingService} from '../../services/DataSharing.service';
 
 @Component({
   selector: 'app-vehiculo-add',
@@ -25,7 +26,8 @@ export class  VehiculoAddComponent implements OnInit {
     private _route: ActivatedRoute,
     private _router: Router,
     private _conductorService: ConductorService,
-    private _activarModal: NgbActiveModal
+    private _activarModal: NgbActiveModal,
+    private dataSharingService: DataSharingService
   ) {
     this.page_title = 'Añadir Vehículo';
   }
@@ -42,8 +44,8 @@ export class  VehiculoAddComponent implements OnInit {
         this._conductorService.agregarAutoConductor(this.conductorVehiculo).subscribe(
           () => {
             this.status_car = 'aceptado';
+            this.dataSharingService.alertMessage.next('aceptado');
             this._activarModal.dismiss('success');
-            window.location.reload();
           },
           error => {
             console.log(<any>error);

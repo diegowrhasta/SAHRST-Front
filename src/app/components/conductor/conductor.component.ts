@@ -38,7 +38,6 @@ export class ConductorComponent implements OnInit {
     this._conductorService.getConductores().subscribe(
       response => {
           this.conductores = response;
-        console.log(response);
       },
       error => {
         this._router.navigate(['login']).then();

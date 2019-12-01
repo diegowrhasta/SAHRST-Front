@@ -7,10 +7,10 @@
 <form #autoNew="ngForm" (ngSubmit)="onSubmit(autoNew)">
   <div class="modal-body">
     <div class="alert alert-danger" *ngIf="status_car == 'error'">
-      La ruta no se registro correctamente, intentelo de nuevo.
+      Datos de Vehículo incorrecto, por favor revise los datos.
     </div>
     <div class="alert alert-success" *ngIf="status_car == 'aceptado'">
-      La ruta fue registrado correctamente.
+      Vehículo registrado correctamente.
     </div>
     <div class="form-group">
       <label for="placa">Nro de Placa</label>
@@ -21,7 +21,7 @@
     </div>
     <div class="form-group">
       <label for="modelo">Modelo</label>
-      <input id="modelo" type="numeric" name="modelo" #modelo="ngModel" [(ngModel)]="vehiculo.modelo" required class="form-control" />
+      <input id="modelo" type="number" name="modelo" #modelo="ngModel" [(ngModel)]="vehiculo.modelo" required class="form-control" />
       <span *ngIf="!modelo.valid && modelo.touched">
         Nro de modelo no es valida
       </span>
