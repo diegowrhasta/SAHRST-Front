@@ -5,6 +5,7 @@ import { ConductorService } from '../../services/conductor.service';
 import { Conductor } from '../../models/conductor';
 import { RutaService } from '../../services/ruta.service';
 import { Ruta } from '../../models/ruta';
+import {asElementData} from '@angular/core/src/view';
 
 @Component({
   selector: 'app-conductor-add',
@@ -19,8 +20,6 @@ export class ConductorAddComponent implements OnInit {
   public token;
   public conductor: Conductor;
   public status_car: string;
-  public rutas: Array<Ruta>;
-  model;
 
   constructor(
     private _route: ActivatedRoute,
@@ -33,23 +32,11 @@ export class ConductorAddComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.conductor = new Conductor(1,'','','','',1,'',1,1,1,'',1);
-
-    this._rutaService.getRutas().subscribe(
-      response => {
-          this.rutas = response;
-        console.log(response);
-      },
-      error => {
-        this._router.navigate(['login']).then();
-      }
-    );
+    this.conductor = new Conductor('', '', '', '', 1, '', 1, 1);
   }
-
 
   onSubmit(form) {
     console.log(this.conductor);
-    console.log(this._conductorService.pruebas());
     this._conductorService.agregar(this.conductor).subscribe(
       response => {
         this._router.navigate(['conductor']);

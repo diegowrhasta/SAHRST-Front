@@ -13,10 +13,6 @@ export class ConductorService {
     this.url = GLOBAL.url;
   }
 
-  pruebas() {
-    return 'Hola Mundo!!';
-  }
-
   agregar(conductor): Observable<any> {
     const json = JSON.stringify(conductor);
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token')).set('Content-Type', 'application/json');

@@ -81,14 +81,6 @@
               <span *ngIf="!telefono.valid && telefono.touched">El telefono no es valido!!</span>
             </div>
           </div>
-          <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
-            <div class="form-group">
-              <label for="ruta_id">Ruta</label>
-              <select class="form-control" id="ruta_id" name="ruta_id" #ruta_id="ngModel" [(ngModel)]="conductor.ruta_id">
-                <option *ngFor="let ruta of rutas" [value]="ruta.ruta_id">{{ruta.ruta_id}}. {{ruta.nombre}}</option>
-              </select>
-            </div>
-          </div>
         </div>
         </div>
         <div class="box-footer">
