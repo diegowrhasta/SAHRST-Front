@@ -17,6 +17,7 @@ export class ConductorDetalleComponent implements OnInit {
 
   public conductor: Conductor;
   public autosConductor: Array<Vehiculo>;
+  public autos: boolean;
 
   constructor(
     private _route: ActivatedRoute,
@@ -46,11 +47,11 @@ export class ConductorDetalleComponent implements OnInit {
     this._conductorService.getAutosConductor(this.id).subscribe(
       response => {
         this.autosConductor = response;
-        console.log(this.autosConductor);
+        this.autos = true;
       },
       error => {
         console.log(error);
-        this._router.navigate(['login']).then();
+        this.autos = false;
       }
     );
   }
