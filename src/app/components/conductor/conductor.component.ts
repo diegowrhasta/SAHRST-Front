@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { ConductorService } from '../../services/conductor.service';
@@ -8,6 +8,7 @@ import { Ruta } from '../../models/ruta';
 import { PuntoService } from '../../services/punto.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ConductorDetalleComponent} from '../conductor-detalle/conductor-detalle.component';
+import {DataSharingService} from '../../services/DataSharing.service';
 
 @Component({
   selector: 'app-conductor',
@@ -15,11 +16,12 @@ import {ConductorDetalleComponent} from '../conductor-detalle/conductor-detalle.
   styleUrls: ['./conductor.component.css'],
   providers: [UserService, ConductorService, RutaService, PuntoService]
 })
-export class ConductorComponent implements OnInit {
+export class ConductorComponent implements OnInit, OnDestroy {
   public page_title: string;
   public conductores: Array<Conductor>;
   public rutas: Array<Ruta>;
   query: String;
+  public conductorAddedStatus: string;
 
   constructor(
     private _route: ActivatedRoute,
@@ -28,9 +30,13 @@ export class ConductorComponent implements OnInit {
     private _puntoService: PuntoService,
     private _conductorService: ConductorService,
     private _rutaService: RutaService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private dataSharingService: DataSharingService
   ) {
     this.page_title = 'Listado de Conductores';
+    this.dataSharingService.conductorAddedMsg.subscribe( value => {
+      this.conductorAddedStatus = value;
+    });
   }
 
   ngOnInit() {
@@ -39,6 +45,7 @@ export class ConductorComponent implements OnInit {
           this.conductores = response;
       },
       error => {
+        console.log(error);
         this._router.navigate(['login']).then();
       }
     );
@@ -48,17 +55,22 @@ export class ConductorComponent implements OnInit {
         this.rutas = response;
       },
       error => {
+        console.log(error);
         this._router.navigate(['login']).then();
       }
     );
   }
 
-  deleteCar(id) {
+  ngOnDestroy(): void {
+    this.dataSharingService.conductorAddedMsg.next('');
+  }
+
+  deleteConductor(id) {
     this._conductorService.delete(id).subscribe(
-      response => {
-        this._router.navigate['conductor'];
-        location.reload();
-        alert('Conductor eliminado correctamente');
+      () => {
+        this.dataSharingService.conductorAddedMsg.next('eliminado');
+        this._router.navigate(['conductor']).then();
+        // location.reload();
       },
       error => {
         console.log(<any>error);
@@ -70,7 +82,7 @@ export class ConductorComponent implements OnInit {
     window.location.reload();
   }
   new() {
-    this._router.navigate(['conductor-add']);
+    this._router.navigate(['conductor-add']).then();
   }
   conductorDetalle(id: number) {
     const modalRef = this.modalService.open(ConductorDetalleComponent, {centered: true});

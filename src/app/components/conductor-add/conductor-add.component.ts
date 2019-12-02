@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { ConductorService } from '../../services/conductor.service';
 import { Conductor } from '../../models/conductor';
 import { RutaService } from '../../services/ruta.service';
-import { Ruta } from '../../models/ruta';
-import {asElementData} from '@angular/core/src/view';
+import {DataSharingService} from '../../services/DataSharing.service';
 
 @Component({
   selector: 'app-conductor-add',
@@ -27,6 +26,7 @@ export class ConductorAddComponent implements OnInit {
     private _userService: UserService,
     private _conductorService: ConductorService,
     private _rutaService: RutaService,
+    private dataSharingService: DataSharingService
   ) {
     this.page_title = 'Crear nuevo conductor';
   }
@@ -38,10 +38,9 @@ export class ConductorAddComponent implements OnInit {
   onSubmit(form) {
     console.log(this.conductor);
     this._conductorService.agregar(this.conductor).subscribe(
-      response => {
-        this._router.navigate(['conductor']);
-        console.log(response);
-        this.status_car = 'aceptado';
+      () => {
+        this.dataSharingService.conductorAddedMsg.next('aceptado');
+        this._router.navigate(['conductor']).then();
       },
       error => {
         console.log(<any>error);
@@ -50,7 +49,7 @@ export class ConductorAddComponent implements OnInit {
     );
   }
   back() {
-    this._router.navigate(['conductor']);
+    this._router.navigate(['conductor']).then();
   }
 
 }

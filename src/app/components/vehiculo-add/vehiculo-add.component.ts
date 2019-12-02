@@ -44,7 +44,7 @@ export class  VehiculoAddComponent implements OnInit {
         this._conductorService.agregarAutoConductor(this.conductorVehiculo).subscribe(
           () => {
             this.status_car = 'aceptado';
-            this.dataSharingService.alertMessage.next('aceptado');
+            this.dataSharingService.carAddedMessage.next('aceptado');
             this._activarModal.dismiss('success');
           },
           error => {

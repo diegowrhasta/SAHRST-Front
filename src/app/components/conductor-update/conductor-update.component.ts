@@ -35,7 +35,7 @@ export class ConductorUpdateComponent implements OnInit {
     private modalService: NgbModal,
     private dataSharingService: DataSharingService
   ) {
-    this.dataSharingService.alertMessage.subscribe( value => {
+    this.dataSharingService.carAddedMessage.subscribe(value => {
       this.carAddedStatus = value;
       if (this.carAddedStatus === 'aceptado') {
         this.getAutos();
@@ -44,7 +44,7 @@ export class ConductorUpdateComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataSharingService.alertMessage.next('');
+    this.dataSharingService.carAddedMessage.next('');
     this._route.params.subscribe(params => {
       const id = +params['id'];
       this.getConductor(id);

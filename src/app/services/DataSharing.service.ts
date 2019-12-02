@@ -3,5 +3,6 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class DataSharingService {
-  public alertMessage: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  public carAddedMessage: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  public conductorAddedMsg: BehaviorSubject<string> = new BehaviorSubject<string>('');
 }
