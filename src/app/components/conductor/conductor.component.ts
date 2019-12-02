@@ -34,7 +34,6 @@ export class ConductorComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('Conductor cargado correctamente');
     this._conductorService.getConductores().subscribe(
       response => {
           this.conductores = response;
@@ -46,8 +45,7 @@ export class ConductorComponent implements OnInit {
 
     this._rutaService.getRutas().subscribe(
       response => {
-          this.rutas = response;
-        console.log(response);
+        this.rutas = response;
       },
       error => {
         this._router.navigate(['login']).then();

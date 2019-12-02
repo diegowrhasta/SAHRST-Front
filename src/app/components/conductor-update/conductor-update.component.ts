@@ -24,6 +24,7 @@ export class ConductorUpdateComponent implements OnInit {
   selectedFile: File;
   public status_edit: string;
   carAddedStatus: string;
+  public autos: boolean;
 
   constructor(
     private _route: ActivatedRoute,
@@ -110,11 +111,11 @@ export class ConductorUpdateComponent implements OnInit {
     this._conductorService.getAutosConductor(this.conductor.conductor_id).subscribe(
       response => {
         this.autosConductor = response;
-        console.log(this.autosConductor);
+        this.autos = true;
       },
       error => {
         console.log(error);
-        this._router.navigate(['login']).then();
+        this.autos = false;
       }
     );
   }
