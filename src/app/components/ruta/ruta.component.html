@@ -30,11 +30,11 @@
                 </tr>
                 <tr *ngFor="let ruta of rutas">
                   <td>
-                    <a [routerLink]="['/ruta',ruta.ruta_id]"><strong>{{ruta.nombre}} </strong><i class="fa fa-edit"></i></a>
+                    <strong style="color: #81a9ff">{{ruta.nombre}} </strong>
                   </td>
                   <td>
                     <div class="btn-group" role="group">
-                      <button class="btn btn-warning" (click)="openEdit(ruta)">Editar</button>
+                      <button class="btn btn-warning" [routerLink]="['/ruta',ruta.ruta_id]">Administrar</button>
                       <button class="btn btn-danger" (click)="deleteRuta(ruta.ruta_id)">Borrar</button>
                     </div>
                   </td>

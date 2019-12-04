@@ -6,6 +6,7 @@ import { RutaService } from '../../services/ruta.service';
 import {DetalleRuta} from '../../models/detalle-ruta';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {PuntoAddComponent} from '../punto-add/punto-add.component';
+import {RutaUpdateComponent} from '../ruta-update/ruta-update.component';
 
 @Component({
   selector: 'app-ruta-detalle',
@@ -81,5 +82,10 @@ export class RutaDetalleComponent implements OnInit {
   openAddPunto(ruta_id: number) {
     const modalRef = this.modalService.open(PuntoAddComponent);
     modalRef.componentInstance.data = ruta_id;
+  }
+
+  openEditName(ruta: Ruta) {
+    const modalRef = this.modalService.open(RutaUpdateComponent);
+    modalRef.componentInstance.data = ruta;
   }
 }

@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { RutaService } from '../../services/ruta.service';
 import { Ruta } from '../../models/ruta';
-import {NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import {RutaUpdateComponent} from '../ruta-update/ruta-update.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {RutaAddComponent} from '../ruta-add/ruta-add.component';
 
 @Component({
@@ -37,6 +36,7 @@ export class RutaComponent implements OnInit {
         console.log(response);
       },
       error => {
+        console.log(error);
         this._router.navigate(['login']).then();
       }
     );
@@ -44,8 +44,8 @@ export class RutaComponent implements OnInit {
 
   deleteRuta(id) {
     this._rutaService.delete(id).subscribe(
-      response => {
-        this._router.navigate['ruta'];
+      () => {
+        this._router.navigate(['ruta']).then();
         location.reload();
         alert('Ruta eliminada correctamente');
       },
@@ -61,10 +61,5 @@ export class RutaComponent implements OnInit {
   openAdd() {
     const modalRef = this.modalService.open(RutaAddComponent);
     modalRef.componentInstance.title = 'Nueva Ruta';
-  }
-
-  openEdit(ruta: Ruta) {
-    const modalRef = this.modalService.open(RutaUpdateComponent);
-    modalRef.componentInstance.data = ruta;
   }
 }
