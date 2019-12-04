@@ -4,6 +4,7 @@ import { UserService } from '../../services/user.service';
 import { Ruta } from '../../models/ruta';
 import { RutaService } from '../../services/ruta.service';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import {DataSharingService} from '../../services/DataSharing.service';
 
 @Component({
   selector: 'app-ruta-update',
@@ -23,7 +24,8 @@ export class RutaUpdateComponent implements OnInit {
     private _router: Router,
     private _userService: UserService,
     private _rutaService: RutaService,
-    private _activarModal: NgbActiveModal
+    private _activarModal: NgbActiveModal,
+    private dataSharingService: DataSharingService
   ) { }
 
   ngOnInit() {
@@ -32,10 +34,10 @@ export class RutaUpdateComponent implements OnInit {
   }
 
   onSubmit(form) {
+    this.dataSharingService.puntoAlertMsg.next('');
     this._rutaService.update(this.ruta, this.ruta.ruta_id).subscribe(
-      response => {
-        this.status_ruta = 'aceptado';
-        console.log(response);
+      () => {
+        this.dataSharingService.rutaAlertMsg.next('aceptado');
         this._activarModal.dismiss('Success');
       },
       error => {

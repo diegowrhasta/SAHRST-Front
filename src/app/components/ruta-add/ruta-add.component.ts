@@ -4,6 +4,7 @@ import { UserService } from '../../services/user.service';
 import { RutaService } from '../../services/ruta.service';
 import { Ruta } from '../../models/ruta';
 import { NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {DataSharingService} from '../../services/DataSharing.service';
 
 @Component({
   selector: 'app-ruta-add',
@@ -27,7 +28,8 @@ export class RutaAddComponent implements OnInit {
     private _router: Router,
     private _userService: UserService,
     private _rutaService: RutaService,
-    private _activarModal: NgbActiveModal
+    private _activarModal: NgbActiveModal,
+    private dataSharingService: DataSharingService
   ) {
     this.page_title = 'Crear nueva ruta';
   }
@@ -41,11 +43,12 @@ export class RutaAddComponent implements OnInit {
       response => {
         this.rutaResponse = response;
         this.status_ruta = 'aceptado';
+        this.dataSharingService.rutaAlertMsg.next('aceptado');
         this._activarModal.dismiss('Success');
-        this._router.navigate(['ruta/', this.rutaResponse.ruta_id]).then();
       },
       error => {
         console.log(<any>error);
+        this.dataSharingService.rutaAlertMsg.next('error');
         this.status_ruta = 'error';
       }
     );

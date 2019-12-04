@@ -8,6 +8,7 @@ import { Punto } from '../../models/punto';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {PuntoRuta} from '../../models/punto-ruta';
 import {PuntoRutaService} from '../../services/punto-ruta.service';
+import {DataSharingService} from '../../services/DataSharing.service';
 
 @Component({
   selector: 'app-punto-add',
@@ -35,12 +36,14 @@ export class PuntoAddComponent implements OnInit {
     private _puntoService: PuntoService,
     private _tipoPuntoService: TipoPuntoService,
     private _activarModal: NgbActiveModal,
-    private _puntoRutaService: PuntoRutaService
+    private _puntoRutaService: PuntoRutaService,
+    private dataSharingService: DataSharingService
   ) {
     this.page_title = 'Crear nuevo punto';
   }
 
   ngOnInit() {
+    this.dataSharingService.rutaAlertMsg.next('');
     this.punto = new Punto(1, '', 1);
     this._tipoPuntoService.getTipoPuntos().subscribe(
       response => {
@@ -60,11 +63,9 @@ export class PuntoAddComponent implements OnInit {
         this.puntoResponse = res;
         this.puntoRuta = new PuntoRuta(1, this.puntoResponse.punto_id, this.data, this.puntoResponse.tipo_punto_id);
         this._puntoRutaService.agregar(this.puntoRuta).subscribe(
-          response => {
-            console.log(response);
-            this.status_car = 'aceptado';
+          () => {
+            this.dataSharingService.puntoAlertMsg.next('aceptado');
             this._activarModal.dismiss('success');
-            window.location.reload();
           },
           error => {
             console.log(<any>error);

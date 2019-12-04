@@ -20,6 +20,15 @@
         </div>
       </div>
       <div class="box-body">
+        <div class="alert alert-success" role="alert" *ngIf="ruta_status == 'aceptado'">
+          Ruta añadida correctamente.
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="ruta_status == 'eliminado'">
+          Ruta eliminada.
+        </div>
+        <div class="alert alert-warning" role="alert" *ngIf="ruta_status == 'error'">
+          Algo no anda bien, por favor intente de nuevo.
+        </div>
         <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="table-responsive">

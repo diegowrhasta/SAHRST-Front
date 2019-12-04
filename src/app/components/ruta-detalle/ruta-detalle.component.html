@@ -24,6 +24,18 @@
         <h4 class="text-danger">Ruta sin puntos, por favor añada nuevos puntos</h4>
       </div>
       <div class="box-body" *ngIf="puntos">
+        <div class="alert alert-success" role="alert" *ngIf="punto_status == 'aceptado'">
+          Punto añadido correctamente.
+        </div>
+        <div class="alert alert-success" role="alert" *ngIf="ruta_status == 'aceptado'">
+          Nombre cambiado correctamente.
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="punto_status == 'eliminado'">
+          Punto eliminado.
+        </div>
+        <div class="alert alert-warning" role="alert" *ngIf="punto_status == 'error'">
+          Algo anda no anda bien, por favor intente de nuevo.
+        </div>
         <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="table-responsive">
