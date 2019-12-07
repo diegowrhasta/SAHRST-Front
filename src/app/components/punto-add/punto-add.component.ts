@@ -9,6 +9,7 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {PuntoRuta} from '../../models/punto-ruta';
 import {PuntoRutaService} from '../../services/punto-ruta.service';
 import {DataSharingService} from '../../services/DataSharing.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-punto-add',
@@ -44,7 +45,7 @@ export class PuntoAddComponent implements OnInit {
 
   ngOnInit() {
     this.dataSharingService.rutaAlertMsg.next('');
-    this.punto = new Punto(1, '', 1);
+    this.punto = new Punto(1, '', '', 1);
     this._tipoPuntoService.getTipoPuntos().subscribe(
       response => {
           this.tipopuntos = response;
@@ -57,8 +58,11 @@ export class PuntoAddComponent implements OnInit {
     );
   }
 
-  onSubmit(form) {
-    this._puntoService.agregar(this.punto).subscribe(
+  onSubmit(puntoNew: NgForm) {
+    this._puntoService.agregar(
+      puntoNew.value.nombreb+", "+puntoNew.value.nombre,
+      puntoNew.value.tipo_punto_id
+    ).subscribe(
       (res) => {
         this.puntoResponse = res;
         this.puntoRuta = new PuntoRuta(1, this.puntoResponse.punto_id, this.data, this.puntoResponse.tipo_punto_id);

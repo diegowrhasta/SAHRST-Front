@@ -5,6 +5,7 @@ import { RutaService } from '../../services/ruta.service';
 import { Ruta } from '../../models/ruta';
 import { NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {DataSharingService} from '../../services/DataSharing.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-ruta-add',
@@ -35,11 +36,13 @@ export class RutaAddComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.ruta = new Ruta(1, '');
+    this.ruta = new Ruta(1, '','');
   }
 
-  onSubmit(form) {
-    this._rutaService.agregar(this.ruta).subscribe(
+  onSubmit(rutaNew: NgForm) {
+    this._rutaService.agregar(
+      rutaNew.value.nombre+" - "+rutaNew.value.nombreb
+    ).subscribe(
       response => {
         this.rutaResponse = response;
         this.status_ruta = 'aceptado';

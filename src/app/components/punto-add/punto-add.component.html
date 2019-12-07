@@ -13,10 +13,15 @@
       El punto fue registrado correctamente.
     </div>
     <div class="col-8 form-group">
-      <label for="nombre">Nombre</label>
+      <label for="nombre">Ingrese la zona Ej.(Miraflores, Obrajes)</label>
       <input id="nombre" type="text" name="nombre" #nombre="ngModel" [(ngModel)]="punto.nombre" required class="form-control"/>
       <span *ngIf="!nombre.valid && nombre.touched">
-        El nombre del punto no es valido
+        El nombre de la zona no es valido
+      </span>
+      <label for="nombreb">Ingrese la calle Ej.(Calle 1, Calle A)</label>
+      <input id="nombreb" type="text" name="nombreb" #nombreb="ngModel" [(ngModel)]="punto.nombreb" required class="form-control"/>
+      <span *ngIf="!nombreb.valid && nombreb.touched">
+        El nombre de la calle no es valido
       </span>
     </div>
     <div class="col-6">

@@ -16,10 +16,13 @@ export class RutaService {
     return 'Hola Mundo!!';
   }
 
-  agregar(ruta): Observable<any> {
-    const json = JSON.stringify(ruta);
+  agregar(
+    nombre:string
+  ): Observable<any> {
+    //const json = JSON.stringify(ruta);
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token')).set('Content-Type', 'application/json');
-    return this._http.post(this.url + 'Ruta', json, {headers: headers});
+    return this._http.post(this.url + 'Ruta', 
+    {nombre: nombre}, {headers: headers});
   }
 
   getRutas(): Observable<any> {

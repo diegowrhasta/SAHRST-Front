@@ -18,10 +18,15 @@ export class PuntoService {
     return 'Hola Mundo!!';
   }
 
-  agregar(punto): Observable<any> {
-    const json = JSON.stringify(punto);
+  agregar(
+    nombre:string,
+    tipo_punto_id:string
+  ): Observable<any> {
+    //const json = JSON.stringify(punto);
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token')).set('Content-Type', 'application/json');
-    return this._http.post(this.url + 'Punto', json, {headers: headers});
+    return this._http.post(this.url + 'Punto', 
+    {nombre: nombre,
+      tipo_punto_id: tipo_punto_id}, {headers: headers});
   }
 
   getPuntos(): Observable<any> {

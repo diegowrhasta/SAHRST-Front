@@ -13,9 +13,14 @@
       La ruta fue registrado correctamente.
     </div>
     <div class="form-group">
-      <label for="nombre">Nombre</label>
+      <label for="nombre">Nombre de la Zona A Ej.(Alto Obrajes, Miraflores)</label>
       <input id="nombre" type="text" name="nombre" #nombre="ngModel" [(ngModel)]="ruta.nombre" required class="form-control" />
       <span *ngIf="!nombre.valid && nombre.touched">
+        El nombre no es valido
+      </span>
+      <label for="nombreb">Nombre de la Zona B Ej.(Alto Obrajes, Miraflores)</label>
+      <input id="nombreb" type="text" name="nombreb" #nombreb="ngModel" [(ngModel)]="ruta.nombreb" required class="form-control" />
+      <span *ngIf="!nombreb.valid && nombreb.touched">
         El nombre no es valido
       </span>
     </div>
