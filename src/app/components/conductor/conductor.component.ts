@@ -49,8 +49,11 @@ export class ConductorComponent implements OnInit, OnDestroy {
         this.conductores = response;
       },
       error => {
-        console.log(error);
-        this._router.navigate(['login']).then();
+        const code = error.error['code'];
+        const msg = error.error['message'];
+        if (code !== 404 && msg !== 'No hay conductores registrados') {
+          this._router.navigate(['login']).then();
+        }
       }
     );
 

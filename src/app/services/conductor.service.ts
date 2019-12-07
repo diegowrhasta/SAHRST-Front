@@ -33,7 +33,7 @@ export class ConductorService {
 
   getConductores(): Observable<any> {
       const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token')).set('Content-Type', 'application/json');
-      return this._http.get(this.url + 'Conductor', {headers: headers});
+      return this._http.get(this.url + 'Conductor', {headers: headers, observe: 'response'});
   }
 
   getConductor(id): Observable<any>  {
