@@ -46,11 +46,12 @@ export class ConductorComponent implements OnInit, OnDestroy {
   getData() {
     this._conductorService.getConductores().subscribe(
       response => {
-        this.conductores = response;
+        this.conductores = response.body;
       },
       error => {
         const code = error.error['code'];
         const msg = error.error['message'];
+        this.conductores = null;
         if (code !== 404 && msg !== 'No hay conductores registrados') {
           this._router.navigate(['login']).then();
         }
