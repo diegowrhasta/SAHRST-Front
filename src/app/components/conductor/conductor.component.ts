@@ -35,14 +35,18 @@ export class ConductorComponent implements OnInit, OnDestroy {
   ) {
     this.page_title = 'Listado de Conductores';
     this.dataSharingService.conductorAddedMsg.subscribe( value => {
+      this.getData();
       this.conductorAddedStatus = value;
     });
   }
 
   ngOnInit() {
+    this.getData();
+  }
+  getData() {
     this._conductorService.getConductores().subscribe(
       response => {
-          this.conductores = response;
+        this.conductores = response;
       },
       error => {
         console.log(error);
