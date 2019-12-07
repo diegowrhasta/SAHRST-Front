@@ -19,10 +19,18 @@ export class ConductorService {
     return this._http.post(this.url + 'Conductor', json, {headers: headers});
   }
 
-  agregarAuto(auto): Observable<any> {
-    const json = JSON.stringify(auto);
+  agregarAuto(    
+    placa:string,
+    modelo:number,
+    marca:string,
+    color:string) {
+    //const json = JSON.stringify(auto);
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('access_token')).set('Content-Type', 'application/json');
-    return this._http.post(this.url + 'Vehiculo', json, {headers: headers});
+    return this._http.post(this.url + 'Vehiculo', 
+    {placa: placa,
+      modelo: modelo,
+      marca: marca,
+      color: color}, {headers: headers});
   }
 
   agregarAutoConductor(autoConductor): Observable<any> {
