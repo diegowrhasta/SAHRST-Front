@@ -18,6 +18,7 @@ export class RutaComponent implements OnInit, OnDestroy {
   public page_title: string;
   public rutas: Array<Ruta>;
   public ruta_status: string;
+  query: string;
 
   constructor(
     private _route: ActivatedRoute,

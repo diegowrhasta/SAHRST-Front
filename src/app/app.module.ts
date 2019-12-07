@@ -30,6 +30,7 @@ import {NgbActiveModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FiltroPipe } from './filtro.pipe';
 import { VehiculoAddComponent } from './components/vehiculo-add/vehiculo-add.component';
 import {DataSharingService} from './services/DataSharing.service';
+import { FiltroRutasPipe } from './filtro-rutas.pipe';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import {DataSharingService} from './services/DataSharing.service';
     PuntoRutaComponent,
     PuntoRutaAddComponent,
     FiltroPipe,
-    VehiculoAddComponent
+    VehiculoAddComponent,
+    FiltroRutasPipe
   ],
   imports: [
     BrowserModule,
